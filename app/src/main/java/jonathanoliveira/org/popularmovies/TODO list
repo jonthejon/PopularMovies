@@ -10,10 +10,10 @@
 // completed: 12/01/17 (2.1) create a new activity named detailsActivity with the help of the wizard
 // completed: 12/01/17 (2.2) update the manifest.xml to proper tag the child activity to the main activity
 
-// TODO: 12/01/17 (3) create new Layout that will hold all images from the server API in Grid
-// TODO: 12/01/17 (3.1) create a new layout in the layouts folder to store movies posters
-// TODO: 12/01/17 (3.2) put everything inside a Framelayout and a single child ImageView
-// TODO: 12/01/17 (3.3) give the imageview id poster_id, set width and height to wrap content and give it a little overall margin
+// completed: 12/01/17 (3) create new Layout that will hold all images from the server API in Grid
+// completed: 12/01/17 (3.1) create a new layout in the layouts folder to store movies posters
+// completed: 12/01/17 (3.2) put everything inside a Framelayout and a single child ImageView
+// completed: 12/01/17 (3.3) give the imageview id poster_id, set width and height to wrap content and give it a little overall padding
 
 // TODO: 12/01/17 (4) create Adapter that will give the Grid all the views that it needs
 
