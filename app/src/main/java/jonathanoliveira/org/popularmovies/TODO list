@@ -19,10 +19,10 @@
 // completed: 12/01/17 (4.1) modify the mainactivity layout so it is wrapped with a framelayout and a single child Recylcer View
 // completed: 12/01/17 (4.2) modify main activity to get reference to recycler view instead of textview
 // completed: 12/01/17 (4.3) get a dummy poster image and put it into your resources sub folder for testing
-// TODO: 12/01/17 (4.4) create new class called gridAdapter extending RecyclerView.Adapter that will be your adapter that will create the views of the posters
-// TODO: 12/01/17 (4.5) override the constructor of the adapter
-// TODO: 12/01/17 (4.6) override the necessary methods of the adapter for later implementation
-// TODO: 12/01/17 (4.7) create an inner class called posterViewHolder that will extend RecyclerView.ViewHolder to hold your objects
+// completed: 12/01/17 (4.4) create new class called gridAdapter extending RecyclerView.Adapter that will be your adapter that will create the views of the posters
+// completed: 12/01/17 (4.5) override the constructor of the adapter
+// completed: 12/01/17 (4.6) override the necessary methods of the adapter for later implementation
+// completed: 12/01/17 (4.7) create an inner class called posterViewHolder that will extend RecyclerView.ViewHolder to hold your objects
 // TODO: 12/01/17 (4.8) implement and correct all adapter's overriden methods
 
 // TODO: 12/01/17 (5) create a grid view using the RecyclerView and chain it with the Adapter
