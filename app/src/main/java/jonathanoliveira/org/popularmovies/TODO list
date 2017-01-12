@@ -15,7 +15,7 @@
 // completed: 12/01/17 (3.2) put everything inside a Framelayout and a single child ImageView
 // completed: 12/01/17 (3.3) give the imageview id poster_id, set width and height to wrap content and give it a little overall padding
 
-// TODO: 12/01/17 (4) create Adapter that will give the Grid all the views that it needs
+// completed: 12/01/17 (4) create Adapter that will give the Grid all the views that it needs
 // completed: 12/01/17 (4.1) modify the mainactivity layout so it is wrapped with a framelayout and a single child Recylcer View
 // completed: 12/01/17 (4.2) modify main activity to get reference to recycler view instead of textview
 // completed: 12/01/17 (4.3) get a dummy poster image and put it into your resources sub folder for testing
@@ -23,9 +23,9 @@
 // completed: 12/01/17 (4.5) override the constructor of the adapter
 // completed: 12/01/17 (4.6) override the necessary methods of the adapter for later implementation
 // completed: 12/01/17 (4.7) create an inner class called posterViewHolder that will extend RecyclerView.ViewHolder to hold your objects
-// TODO: 12/01/17 (4.8) implement and correct all adapter's overriden methods
+// completed: 12/01/17 (4.8) implement and correct all adapter's overriden methods
 
-// TODO: 12/01/17 (5) create a grid view using the RecyclerView and chain it with the Adapter
+// TODO: 12/01/17 (5) create a grid view using the RecyclerView and chain it with the Adapter, using the tutorial found on internet https://www.learn2crack.com/2016/03/grid-recyclerview-with-images-and-text.html
 
 // TODO: 12/01/17 (6) install Picasso framework to help you with image handling
 
