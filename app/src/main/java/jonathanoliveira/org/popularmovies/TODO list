@@ -25,9 +25,9 @@
 // completed: 12/01/17 (4.7) create an inner class called posterViewHolder that will extend RecyclerView.ViewHolder to hold your objects
 // completed: 12/01/17 (4.8) implement and correct all adapter's overriden methods
 
-// TODO: 12/01/17 (5) create a grid view using the RecyclerView and chain it with the Adapter, using the tutorial found on internet https://www.learn2crack.com/2016/03/grid-recyclerview-with-images-and-text.html
+// completed: 12/01/17 (5) create a grid view using the RecyclerView and chain it with the Adapter, using the tutorial found on internet https://www.learn2crack.com/2016/03/grid-recyclerview-with-images-and-text.html
 
-// TODO: 12/01/17 (6) install Picasso framework to help you with image handling
+// completed: 12/01/17 (6) install Picasso framework to help you with image handling
 
 // TODO: 12/01/17 (7) connect to the movies API and receive data, populating the views in the Adapter
 

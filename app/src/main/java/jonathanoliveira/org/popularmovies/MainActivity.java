@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager gridManager = new GridLayoutManager(getApplicationContext(),2);
         mRecyclerView.setLayoutManager(gridManager);
         mRecyclerView.setAdapter(mGridAdapter);
+
     }
 
     @Override
