@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
 }
 
 // TODO: 12/01/17 (1) create a menu button for the settings with a toast to check
-// TODO: 12/01/17 (1.1) create a new xml menu resource in a new menu resource folder
-// TODO: 12/01/17 (1.2) create a new item called settings in the menu xml with proper properties such as order, if room, etc
+// completed: 12/01/17 (1.1) create a new xml menu resource in a new menu resource folder
+// completed: 12/01/17 (1.2) create a new item called settings in the menu xml with proper properties such as order, if room, etc
 // TODO: 12/01/17 (1.3) override the proper methods to create the menu and implement them
 // TODO: 12/01/17 (1.4) on the itemclicked method, create a Toast to check if button is working
 // TODO: 12/01/17 (2) create new detailsActivity and link it as a child to the main activity
