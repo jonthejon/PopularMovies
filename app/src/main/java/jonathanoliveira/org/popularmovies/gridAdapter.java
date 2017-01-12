@@ -16,9 +16,13 @@ import java.util.List;
 
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHolder> {
 
-    List<String> posterUrlArr = new ArrayList<>();
+//    List<String> posterUrlArr = new ArrayList<>();
+    private Context context;
+    private int sizeDisplay;
 
-    public GridAdapter() {
+    public GridAdapter(Context context, int sizeDisplay) {
+        this.context = context;
+        this.sizeDisplay = sizeDisplay;
     }
 
     @Override
@@ -35,13 +39,14 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
     @Override
     public void onBindViewHolder(PosterViewHolder holder, int position) {
         String movieName = holder.poster.getContentDescription().toString();
-        int resourceId = holder.poster.getId();
+        int resourceId = R.drawable.ic_cloud_off_black_24dp;
         holder.bindData(resourceId,movieName);
     }
 
     @Override
     public int getItemCount() {
-        return posterUrlArr.size();
+//        return posterUrlArr.size();
+        return sizeDisplay;
     }
 
     class PosterViewHolder extends RecyclerView.ViewHolder {
