@@ -2,6 +2,9 @@ package jonathanoliveira.org.popularmovies;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,13 +13,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+       getMenuInflater().inflate(R.menu.settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        switch (itemId) {
+            case R.id.settings_button:
+                Toast.makeText(this,"Settings button clicked.", Toast.LENGTH_LONG).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
 
-// TODO: 12/01/17 (1) create a menu button for the settings with a toast to check
+// completed: 12/01/17 (1) create a menu button for the settings with a toast to check
 // completed: 12/01/17 (1.1) create a new xml menu resource in a new menu resource folder
 // completed: 12/01/17 (1.2) create a new item called settings in the menu xml with proper properties such as order, if room, etc
-// TODO: 12/01/17 (1.3) override the proper methods to create the menu and implement them
-// TODO: 12/01/17 (1.4) on the itemclicked method, create a Toast to check if button is working
+// completed: 12/01/17 (1.3) override the proper methods to create the menu and implement them
+// completed: 12/01/17 (1.4) on the itemclicked method, create a Toast to check if button is working
 // TODO: 12/01/17 (2) create new detailsActivity and link it as a child to the main activity
 // TODO: 12/01/17 (3) create new Layout that will hold all images from the server API in Grid
 // TODO: 12/01/17 (4) create Adapter that will give the Grid all the views that it needs
