@@ -19,22 +19,32 @@ import java.util.List;
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHolder> {
 
     private Movie[] moviesArr;
-    private Context context;
-    private int sizeDisplay;
+    private ClickViewInterface myInterface;
+    private Picasso picasso;
+    // completed: 13/01/17 create a private final interface Instance Variable
 
-    public GridAdapter(Context context) {
-        this.context = context;
+//    public GridAdapter(MainActivity activity) {
+    public GridAdapter(ClickViewInterface myInterface, Picasso picasso) {
+        // completed: 13/01/17 modify this constructor to receive a reference from Main Activity
+        // completed: 13/01/17 initiate context and interface instance variables with this Main Activity reference
+//        this.context = activity.getApplicationContext();
+        this.myInterface = myInterface;
+        this.picasso = picasso;
     }
 
-    public GridAdapter(Context context, Movie[] moviesArr) {
+/*    public GridAdapter(Movie[] moviesArr) {
         this.context = context;
-        this.sizeDisplay = sizeDisplay;
         this.moviesArr = moviesArr;
-    }
+    }*/
 
     public void setMoviesArr(Movie[] moviesArr) {
         this.moviesArr = moviesArr;
         notifyDataSetChanged();
+    }
+
+    // completed: 13/01/17 create an interface called ClickViewInterface with 1 method called OnClickView with no arguments
+    public interface ClickViewInterface {
+        void OnClickView();
     }
 
     @Override
@@ -57,13 +67,15 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
 
     @Override
     public int getItemCount() {
-        if (moviesArr == null || moviesArr.length == 0) {
+        if (moviesArr == null) {
             return 0;
         }
         return moviesArr.length;
     }
 
-    class PosterViewHolder extends RecyclerView.ViewHolder {
+    // completed: 13/01/17 implement View.OnClickListener on PosterViewHolder and override the necessary method
+    // completed: 13/01/17 on the overriden method, call the interface method that you created
+    class PosterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView poster;
 
@@ -73,14 +85,17 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
         }
 
         void bindData(String movieName, String completePosterPath) {
-            Picasso.with(context)
-                    .load(completePosterPath)
+            picasso.load(completePosterPath)
                     .placeholder(R.drawable.ic_wb_cloudy_black_24dp)
                     .error(R.drawable.ic_error_outline_black_24dp)
                     .into(poster);
             poster.setContentDescription(movieName);
         }
 
+        @Override
+        public void onClick(View v) {
+            myInterface.OnClickView();
+        }
     }
 
 }

@@ -1,5 +1,7 @@
 package jonathanoliveira.org.popularmovies;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,25 +12,31 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+// TODO: 13/01/17 implement the interface that is inside the GridAdapter class and override the necessary method
+// TODO: 13/01/17 within the implemented method, create an Intent and start the new Activity
+public class MainActivity extends AppCompatActivity implements GridAdapter.ClickViewInterface {
 
     private RecyclerView mRecyclerView;
     private GridAdapter mGridAdapter;
+    private Picasso picasso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loadMoviesData();
-        mGridAdapter = new GridAdapter(this);
+        Picasso.Builder picassoBuilder = new Picasso.Builder(this);
+        this.picasso = picassoBuilder.build();
+        mGridAdapter = new GridAdapter(this, this.picasso);
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_grid);
         mRecyclerView.setHasFixedSize(true);
-        // TODO: 13/01/17 change the type of layout to LinearLayout and test the app. Commit.
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
         RecyclerView.LayoutManager gridManager = new GridLayoutManager(getApplicationContext(),2);
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -37,6 +45,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadMoviesData() {
         new internetAsyncTask().execute(NetworkUtils.build_MD_API_Url());
+    }
+
+    public static Context getActivityContext() {
+        return MainActivity.getActivityContext();
+    }
+
+    @Override
+    public void OnClickView() {
+        Toast.makeText(this,"Test text",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this,MovieDetailsActivity.class);
+        startActivity(intent);
     }
 
     public class internetAsyncTask extends AsyncTask<URL, Void, Movie[]> {
@@ -77,10 +96,6 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         switch (itemId) {
             case R.id.settings_button:
-//                Toast.makeText(this,"Settings button clicked.", Toast.LENGTH_LONG).show();
-//                String url = NetworkUtils.build_MD_API_Url().toString();
-//                Toast.makeText(this,url,Toast.LENGTH_LONG).show();
-//                Toast.makeText(this, Integer.toString(testMovies.length), Toast.LENGTH_LONG).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);

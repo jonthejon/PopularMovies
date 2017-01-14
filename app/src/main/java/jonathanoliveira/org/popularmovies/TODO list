@@ -41,6 +41,7 @@
 // completed: 12/01/17 (7.9) GridAdapter: inside onBindViewHolder(), get the String with the movie title using the proper movie object
 
 // TO DO: 12/01/17 (8) create click listeners in each grid cell of the GridView and link to the detailsActivity
+// completed: 13/01/17 change the type of layout to LinearLayout and test the app. Commit.
 
 // TO DO: 12/01/17 (9) update data info to parcelable so it can take phone tilt without crashing
 
