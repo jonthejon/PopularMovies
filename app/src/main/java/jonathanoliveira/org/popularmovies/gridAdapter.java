@@ -20,12 +20,12 @@ import java.util.List;
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHolder> {
 
     private Movie[] moviesArr;
-    final private ListItemClickListener myInterface;
+    final private GridItemClickListener myInterface;
     private Picasso picasso;
     // completed: 13/01/17 create a private final interface Instance Variable
 
 //    public GridAdapter(MainActivity activity) {
-    public GridAdapter(ListItemClickListener myInterface, Picasso picasso) {
+    public GridAdapter(GridItemClickListener myInterface, Picasso picasso) {
         // completed: 13/01/17 modify this constructor to receive a reference from Main Activity
         // completed: 13/01/17 initiate context and interface instance variables with this Main Activity reference
         this.myInterface = myInterface;
@@ -43,8 +43,8 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
     }
 
     // completed: 13/01/17 create an interface called ClickViewInterface with 1 method called OnClickView with no arguments
-    public interface ListItemClickListener {
-        void OnClickView(int clickedItemIndex);
+    public interface GridItemClickListener {
+        void OnClickView(String movieName);
     }
 
     @Override
@@ -95,7 +95,8 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
 
         @Override
         public void onClick(View v) {
-            myInterface.OnClickView(2);
+            String movieName = this.poster.getContentDescription().toString();
+            myInterface.OnClickView(movieName);
         }
     }
 

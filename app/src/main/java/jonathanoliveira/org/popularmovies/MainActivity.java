@@ -20,7 +20,7 @@ import java.net.URL;
 
 // TODO: 13/01/17 implement the interface that is inside the GridAdapter class and override the necessary method
 // TODO: 13/01/17 within the implemented method, create an Intent and start the new Activity
-public class MainActivity extends AppCompatActivity implements GridAdapter.ListItemClickListener {
+public class MainActivity extends AppCompatActivity implements GridAdapter.GridItemClickListener {
 
     private RecyclerView mRecyclerView;
     private GridAdapter mGridAdapter;
@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.ListI
 
 
     @Override
-    public void OnClickView(int number) {
-        Toast.makeText(this,Integer.toString(number),Toast.LENGTH_LONG).show();
+    public void OnClickView(String movieName) {
+        Toast.makeText(this,movieName,Toast.LENGTH_LONG).show();
 //        Intent intent = new Intent(this,MovieDetailsActivity.class);
 //        startActivity(intent);
     }
