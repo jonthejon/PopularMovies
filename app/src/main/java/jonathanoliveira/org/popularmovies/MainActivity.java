@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private GridAdapter mGridAdapter;
-    private Movie[] testMovies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Movie[] movieResult) {
             if (movieResult != null) {
                 mGridAdapter.setMoviesArr(movieResult);
-                testMovies = movieResult;
             }
         }
     }
@@ -79,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(this,"Settings button clicked.", Toast.LENGTH_LONG).show();
 //                String url = NetworkUtils.build_MD_API_Url().toString();
 //                Toast.makeText(this,url,Toast.LENGTH_LONG).show();
-                Toast.makeText(this, Integer.toString(testMovies.length), Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, Integer.toString(testMovies.length), Toast.LENGTH_LONG).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);

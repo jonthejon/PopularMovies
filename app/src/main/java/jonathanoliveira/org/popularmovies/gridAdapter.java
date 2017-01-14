@@ -52,8 +52,6 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
     public void onBindViewHolder(PosterViewHolder holder, int position) {
         String movieName = moviesArr[position].getMovie_title();
         String completePosterPath = NetworkUtils.build_Picasso_Url(moviesArr[position].getPoster_path());
-//        String movieName = holder.poster.getContentDescription().toString();
-//        int resourceId = R.drawable.ic_cloud_off_black_24dp;
         holder.bindData(movieName, completePosterPath);
     }
 
