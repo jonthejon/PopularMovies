@@ -5,11 +5,9 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -18,8 +16,6 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.net.URL;
 
-// TODO: 13/01/17 implement the interface that is inside the GridAdapter class and override the necessary method
-// TODO: 13/01/17 within the implemented method, create an Intent and start the new Activity
 public class MainActivity extends AppCompatActivity implements GridAdapter.GridItemClickListener {
 
     private RecyclerView mRecyclerView;
@@ -32,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
         setContentView(R.layout.activity_main);
         loadMoviesData();
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_grid);
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         RecyclerView.LayoutManager gridManager = new GridLayoutManager(getApplicationContext(),2);
         mRecyclerView.setLayoutManager(gridManager);
         mRecyclerView.setHasFixedSize(true);
@@ -48,9 +43,10 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
 
 
     @Override
-    public void OnClickView(String movieName) {
-//        Toast.makeText(this,movieName,Toast.LENGTH_LONG).show();
+    public void OnClickView(int position) {
+        Movie movie = mGridAdapter.getMovie(position);
         Intent intent = new Intent(this,MovieDetailsActivity.class);
+        intent.putExtra(Intent.EXTRA_TEXT,movie);
         startActivity(intent);
     }
 

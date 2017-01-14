@@ -1,37 +1,41 @@
 package jonathanoliveira.org.popularmovies;
 
+import java.io.Serializable;
+
 /**
  * Created by JonathanOliveira on 13/01/17.
  */
 
-public class Movie {
+public class Movie implements Serializable {
 
     private String poster_path;
     private String movie_title;
     private String overview;
     private String release_date;
+    private int id;
 
     public Movie() {
-        this("Title not available","Poster not available","Overview not available","Release date not available");
+        this("Title not available","Poster not available","Overview not available","Release date not available",0);
     }
 
     public Movie(String poster_path) {
-        this("Title not available",poster_path,"Overview not available","Release date not available");
+        this("Title not available",poster_path,"Overview not available","Release date not available",0);
     }
 
     public Movie(String poster_path, String movie_title) {
-        this(movie_title,poster_path,"Overview not available","Release date not available");
+        this(movie_title,poster_path,"Overview not available","Release date not available",0);
     }
 
     public Movie(String poster_path, String movie_title, String overview) {
-        this(movie_title,poster_path,overview,"Release date not available");
+        this(movie_title,poster_path,overview,"Release date not available",0);
     }
 
-    public Movie(String poster_path, String movie_title, String overview, String release_date) {
+    public Movie(String poster_path, String movie_title, String overview, String release_date, int id) {
         this.poster_path = poster_path;
         this.movie_title = movie_title;
         this.overview = overview;
         this.release_date = release_date;
+        this.id = id;
     }
 
     public String getPoster_path() {

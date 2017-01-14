@@ -10,9 +10,6 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by JonathanOliveira on 12/01/17.
  */
@@ -22,29 +19,24 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
     private Movie[] moviesArr;
     final private GridItemClickListener myInterface;
     private Picasso picasso;
-    // completed: 13/01/17 create a private final interface Instance Variable
 
-//    public GridAdapter(MainActivity activity) {
+
     public GridAdapter(GridItemClickListener myInterface, Picasso picasso) {
-        // completed: 13/01/17 modify this constructor to receive a reference from Main Activity
-        // completed: 13/01/17 initiate context and interface instance variables with this Main Activity reference
         this.myInterface = myInterface;
         this.picasso = picasso;
     }
-
-/*    public GridAdapter(Movie[] moviesArr) {
-        this.context = context;
-        this.moviesArr = moviesArr;
-    }*/
 
     public void setMoviesArr(Movie[] moviesArr) {
         this.moviesArr = moviesArr;
         notifyDataSetChanged();
     }
 
-    // completed: 13/01/17 create an interface called ClickViewInterface with 1 method called OnClickView with no arguments
+    public Movie getMovie(int position) {
+        return moviesArr[position];
+    }
+
     public interface GridItemClickListener {
-        void OnClickView(String movieName);
+        void OnClickView(int position);
     }
 
     @Override
@@ -73,8 +65,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
         return moviesArr.length;
     }
 
-    // completed: 13/01/17 implement View.OnClickListener on PosterViewHolder and override the necessary method
-    // completed: 13/01/17 on the overriden method, call the interface method that you created
+
     class PosterViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
 
         ImageView poster;
@@ -95,8 +86,9 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
 
         @Override
         public void onClick(View v) {
-            String movieName = this.poster.getContentDescription().toString();
-            myInterface.OnClickView(movieName);
+            int position = this.getAdapterPosition();
+//            String movieName = this.poster.getContentDescription().toString();
+            myInterface.OnClickView(position);
         }
     }
 

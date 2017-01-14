@@ -42,6 +42,14 @@
 
 // TO DO: 12/01/17 (8) create click listeners in each grid cell of the GridView and link to the detailsActivity
 // completed: 13/01/17 change the type of layout to LinearLayout and test the app. Commit.
+    // completed: 13/01/17 implement View.OnClickListener on PosterViewHolder and override the necessary method
+    // completed: 13/01/17 on the overriden method, call the interface method that you created
+    // completed: 13/01/17 create an interface called ClickViewInterface with 1 method called OnClickView with no arguments
+    // completed: 13/01/17 modify this constructor to receive a reference from Main Activity
+    // completed: 13/01/17 initiate context and interface instance variables with this Main Activity reference
+    // completed: 13/01/17 create a private final interface Instance Variable
+    // completed: 13/01/17 implement the interface that is inside the GridAdapter class and override the necessary method
+    // completed: 13/01/17 within the implemented method, create an Intent and start the new Activity
 
 // TO DO: 12/01/17 (9) update data info to parcelable so it can take phone tilt without crashing
 
