@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
 
     @Override
     public void OnClickView(String movieName) {
-        Toast.makeText(this,movieName,Toast.LENGTH_LONG).show();
-//        Intent intent = new Intent(this,MovieDetailsActivity.class);
-//        startActivity(intent);
+//        Toast.makeText(this,movieName,Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this,MovieDetailsActivity.class);
+        startActivity(intent);
     }
 
     public class internetAsyncTask extends AsyncTask<URL, Void, Movie[]> {
