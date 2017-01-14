@@ -29,7 +29,7 @@
 
 // completed: 12/01/17 (6) install Picasso framework to help you with image handling
 
-// TODO: 12/01/17 (7) connect to the movies API and receive data, populating the views in the Adapter
+// completed: 12/01/17 (7) connect to the movies API and receive data, populating the views in the Adapter
 // completed: 12/01/17 (7.1) create the class NetworkUtils that will handle network connection and URI building
 // completed: 12/01/17 (7.2) inside NetworkUtils create a URL builder method and test builder with a Toast
 // completed: 12/01/17 (7.3) inside NetworkUtils create a method that will communicate with the MBAPI
@@ -37,15 +37,15 @@
 // completed: 12/01/17 (7.5) MainActivity: create a method that will build URL and start AsyncTask to call API
 // completed: 12/01/17 (7.6) MainActivity: update the Adapter reference with the array of movie objects
 // completed: 12/01/17 (7.7) create a class Movie that will hold movie data -> poster_path and movie_title. Create constructors and getters/setters
-// TODO: 12/01/17 (7.8) GridAdapter: inside onBindViewHolder(), call upon the picasso library to fetch the poster image using the proper movie object
-// TODO: 12/01/17 (7.9) GridAdapter: inside onBindViewHolder(), get the String with the movie title using the proper movie object
+// completed: 12/01/17 (7.8) GridAdapter: inside onBindViewHolder(), call upon the picasso library to fetch the poster image using the proper movie object
+// completed: 12/01/17 (7.9) GridAdapter: inside onBindViewHolder(), get the String with the movie title using the proper movie object
 
-// TODO: 12/01/17 (8) create click listeners in each grid cell of the GridView and link to the detailsActivity
+// TO DO: 12/01/17 (8) create click listeners in each grid cell of the GridView and link to the detailsActivity
 
-// TODO: 12/01/17 (9) update data info to parcelable so it can take phone tilt without crashing
+// TO DO: 12/01/17 (9) update data info to parcelable so it can take phone tilt without crashing
 
-// TODO: 12/01/17 (10) populate details activity with custom data of the clicked movie
+// TO DO: 12/01/17 (10) populate details activity with custom data of the clicked movie
 
-// TODO: 12/01/17 (11) create different layout for tilted or not tilted phone
+// TO DO: 12/01/17 (11) create different layout for tilted or not tilted phone
 
-// TODO: 12/01/17 (12) give functionality to the settings button to change the order of the sorting
+// give functionality to the settings button to change the order of the sorting

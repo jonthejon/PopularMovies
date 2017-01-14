@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
         mGridAdapter = new GridAdapter(this);
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_grid);
         mRecyclerView.setHasFixedSize(true);
+        // TODO: 13/01/17 change the type of layout to LinearLayout and test the app. Commit.
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
         RecyclerView.LayoutManager gridManager = new GridLayoutManager(getApplicationContext(),2);
-        mRecyclerView.setLayoutManager(gridManager);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mGridAdapter);
     }
 
