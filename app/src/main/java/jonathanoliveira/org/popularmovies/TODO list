@@ -40,7 +40,7 @@
 // completed: 12/01/17 (7.8) GridAdapter: inside onBindViewHolder(), call upon the picasso library to fetch the poster image using the proper movie object
 // completed: 12/01/17 (7.9) GridAdapter: inside onBindViewHolder(), get the String with the movie title using the proper movie object
 
-// TO DO: 12/01/17 (8) create click listeners in each grid cell of the GridView and link to the detailsActivity
+// completed: 12/01/17 (8) create click listeners in each grid cell of the GridView and link to the detailsActivity
 // completed: 13/01/17 change the type of layout to LinearLayout and test the app. Commit.
     // completed: 13/01/17 implement View.OnClickListener on PosterViewHolder and override the necessary method
     // completed: 13/01/17 on the overriden method, call the interface method that you created
@@ -51,10 +51,12 @@
     // completed: 13/01/17 implement the interface that is inside the GridAdapter class and override the necessary method
     // completed: 13/01/17 within the implemented method, create an Intent and start the new Activity
 
-// TO DO: 12/01/17 (9) update data info to parcelable so it can take phone tilt without crashing
-
-// TO DO: 12/01/17 (10) populate details activity with custom data of the clicked movie
-
-// TO DO: 12/01/17 (11) create different layout for tilted or not tilted phone
+//  populate details activity with custom data of the clicked movie
+        // completed: 16/01/17  (implement in the detailsActivity xml) a linear layout with horizontal orientation to hold poster and synopsis after the title
+        // completed: 16/01/17  (''), (inside the linear layout), a imageview that will hold the detail movie poster
+        // completed: 16/01/17 (''), (''), put the overview inside the linear layout
+        // completed: 16/01/17 (''), but outside of the linear layout, create 2 text views to hold the movie rating and the release date
 
 // give functionality to the settings button to change the order of the sorting
+
+// avoid app crashing when no internet connection is found

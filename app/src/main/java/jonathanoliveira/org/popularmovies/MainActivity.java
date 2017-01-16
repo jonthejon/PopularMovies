@@ -16,6 +16,14 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.net.URL;
 
+/*
+original title
+        movie poster image thumbnail
+        A plot synopsis (called overview in the api)
+        user rating (called vote_average in the api)
+        release date
+*/
+
 public class MainActivity extends AppCompatActivity implements GridAdapter.GridItemClickListener {
 
     private RecyclerView mRecyclerView;

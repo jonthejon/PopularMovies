@@ -10,6 +10,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private TextView movieNameTextView;
     private TextView movieOverviewTextView;
     private TextView movieRDTextView;
+    // TODO: 16/01/17 wire all the views to display the correct movie data
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
             String movieName = callerMovie.getMovie_title();
             String movieOverview = callerMovie.getOverview();
             String movieReleaseDate = callerMovie.getRelease_date();
+            // TODO: 16/01/17 create a method to wire all view attaching
+            // TODO: 16/01/17 create a method to call Picasso and wire the proper image
             movieNameTextView.setText(movieName);
             movieOverviewTextView.setText(movieOverview);
             movieRDTextView.setText(movieReleaseDate);

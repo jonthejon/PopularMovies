@@ -13,6 +13,7 @@ public class Movie implements Serializable {
     private String overview;
     private String release_date;
     private int id;
+    // TODO: 16/01/17 implement the user rating into the movie object 
 
     public Movie() {
         this("Title not available","Poster not available","Overview not available","Release date not available",0);
