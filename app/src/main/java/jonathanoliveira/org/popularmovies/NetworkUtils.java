@@ -50,13 +50,16 @@ public final class NetworkUtils {
     // The image type of poster for picasso url
     final static String DOWNLOAD_IMAGE_TYPE = "w185";
 
-    public static URL build_MD_API_Url() {
+    public static URL build_MD_API_Url(boolean sortByPopularity) {
         Uri uriQuery = Uri.parse(MOVIEDB_API_BASE_URL).buildUpon()
                 .appendQueryParameter(API_KEY,JONATHAN_MOVIEDB_API_KEY)
-                .appendQueryParameter(SORT_TYPE,popularityFormat)
+                // completed: 16/01/17 apply a ternary to choose between the type of sort we will display
+                .appendQueryParameter(SORT_TYPE,sortByPopularity ? popularityFormat : ratingFormat)
+//                .appendQueryParameter(SORT_TYPE,popularityFormat)
                 .appendQueryParameter(INCLUDE_ADULT_FILM_OPTION,negate)
                 .appendQueryParameter(INCLUDE_VIDEO_OPTION,negate)
                 .appendQueryParameter(PAGES_NUM,Integer.toString(numPages))
+                .appendQueryParameter("year","2017")
                 .build();
         URL url = null;
         try {

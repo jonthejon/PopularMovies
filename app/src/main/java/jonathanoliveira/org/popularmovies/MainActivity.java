@@ -16,25 +16,19 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.net.URL;
 
-/*
-original title
-        movie poster image thumbnail
-        A plot synopsis (called overview in the api)
-        user rating (called vote_average in the api)
-        release date
-*/
-
 public class MainActivity extends AppCompatActivity implements GridAdapter.GridItemClickListener {
 
     private RecyclerView mRecyclerView;
     private GridAdapter mGridAdapter;
     private Picasso picasso;
+    private boolean sortByPopularity = true;
+    // completed: 16/01/17 implement the boolean that will inform which type of sort will be displayed
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loadMoviesData();
+        loadMoviesData(sortByPopularity);
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_grid);
         RecyclerView.LayoutManager gridManager = new GridLayoutManager(getApplicationContext(),2);
         mRecyclerView.setLayoutManager(gridManager);
@@ -45,8 +39,9 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
         mRecyclerView.setAdapter(mGridAdapter);
     }
 
-    public void loadMoviesData() {
-        new internetAsyncTask().execute(NetworkUtils.build_MD_API_Url());
+    // completed: 16/01/17 change loadMoviesData() and NetworkUtils.build_MD_API_Url() to receive a boolean concerning the type of information
+    public void loadMoviesData(boolean sortByPopularity) {
+        new internetAsyncTask().execute(NetworkUtils.build_MD_API_Url(sortByPopularity));
     }
 
 
@@ -96,6 +91,16 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
         int itemId = item.getItemId();
         switch (itemId) {
             case R.id.settings_button:
+                if (this.sortByPopularity) {
+                    item.setTitle(getString(R.string.popular));
+                    this.sortByPopularity = false;
+                } else {
+                    item.setTitle(getString(R.string.rated));
+                    this.sortByPopularity = true;
+                }
+                loadMoviesData(this.sortByPopularity);
+                // completed: 16/01/17 every time this button is pressed, change the title to the other option and the boolean too
+                // completed: 16/01/17 call loadInfo again
                 return true;
         }
         return super.onOptionsItemSelected(item);

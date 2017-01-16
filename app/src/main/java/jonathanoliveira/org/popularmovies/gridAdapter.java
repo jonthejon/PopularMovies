@@ -27,6 +27,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
     }
 
     public void setMoviesArr(Movie[] moviesArr) {
+        this.moviesArr = null;
         this.moviesArr = moviesArr;
         notifyDataSetChanged();
     }
