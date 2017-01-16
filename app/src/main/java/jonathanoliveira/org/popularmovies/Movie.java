@@ -12,31 +12,30 @@ public class Movie implements Serializable {
     private String movie_title;
     private String overview;
     private String release_date;
-    private int id;
-    // TODO: 16/01/17 implement the user rating into the movie object 
+    private double vote_average;
 
     public Movie() {
-        this("Title not available","Poster not available","Overview not available","Release date not available",0);
+        this("Title not available","Poster not available","Overview not available","Release date not available",0.0);
     }
 
     public Movie(String poster_path) {
-        this("Title not available",poster_path,"Overview not available","Release date not available",0);
+        this("Title not available",poster_path,"Overview not available","Release date not available",0.0);
     }
 
     public Movie(String poster_path, String movie_title) {
-        this(movie_title,poster_path,"Overview not available","Release date not available",0);
+        this(movie_title,poster_path,"Overview not available","Release date not available",0.0);
     }
 
     public Movie(String poster_path, String movie_title, String overview) {
-        this(movie_title,poster_path,overview,"Release date not available",0);
+        this(movie_title,poster_path,overview,"Release date not available",0.0);
     }
 
-    public Movie(String poster_path, String movie_title, String overview, String release_date, int id) {
+    public Movie(String poster_path, String movie_title, String overview, String release_date, double vote_average) {
         this.poster_path = poster_path;
         this.movie_title = movie_title;
         this.overview = overview;
         this.release_date = release_date;
-        this.id = id;
+        this.vote_average = vote_average;
     }
 
     public String getPoster_path() {
@@ -69,6 +68,14 @@ public class Movie implements Serializable {
 
     public void setRelease_date(String release_date) {
         this.release_date = release_date;
+    }
+
+    public double getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(double vote_average) {
+        this.vote_average = vote_average;
     }
 
     @Override

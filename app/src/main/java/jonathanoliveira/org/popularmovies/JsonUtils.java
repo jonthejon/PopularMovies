@@ -53,7 +53,7 @@ public final class JsonUtils {
             String overview;
             String release_date;
             String title;
-            int id;
+            double vote_average;
 
             /* Get the JSON object representing the current movie */
             JSONObject movieJsonObject = moviesArray.getJSONObject(i);
@@ -63,9 +63,9 @@ public final class JsonUtils {
             overview = movieJsonObject.getString("overview");
             release_date = movieJsonObject.getString("release_date");
             title = movieJsonObject.getString("title");
-            id = movieJsonObject.getInt("id");
+            vote_average = movieJsonObject.getDouble("vote_average");
 
-            movies[i] = new Movie(poster_path,title,overview,release_date,id);
+            movies[i] = new Movie(poster_path,title,overview,release_date,vote_average);
         }
 
         return movies;
