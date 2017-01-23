@@ -9,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
 
     // completed: 16/01/17 change loadMoviesData() and NetworkUtils.build_MD_API_Url() to receive a boolean concerning the type of information
     public void loadMoviesData(boolean sortByPopularity) {
-        new internetAsyncTask().execute(NetworkUtils.build_MD_API_Url(sortByPopularity));
+        new InternetAsyncTask().execute(NetworkUtils.build_MD_API_Url(sortByPopularity));
     }
 
     @Override
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
     }
 
 
-    public class internetAsyncTask extends AsyncTask<URL, Void, Movie[]> {
+    public class InternetAsyncTask extends AsyncTask<URL, Void, Movie[]> {
         @Override
         protected Movie[] doInBackground(URL... urls) {
             if (urls.length == 0) {
@@ -84,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
         protected void onPostExecute(Movie[] movieResult) {
             if (movieResult != null) {
                 mGridAdapter.setMoviesArr(movieResult);
+            } else {
+                Toast.makeText(MainActivity.this, "Something went terribly wrong! Please check your internet connection and try again.", Toast.LENGTH_LONG).show();
             }
         }
     }
