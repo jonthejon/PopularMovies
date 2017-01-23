@@ -1,6 +1,7 @@
 package jonathanoliveira.org.popularmovies;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +32,12 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
         loadMoviesData(sortByPopularity);
         String test = "test";
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_grid);
-        RecyclerView.LayoutManager gridManager = new GridLayoutManager(getApplicationContext(), 2);
+        RecyclerView.LayoutManager gridManager;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            gridManager = new GridLayoutManager(getApplicationContext(), 2);
+        } else {
+            gridManager = new GridLayoutManager(getApplicationContext(), 4);
+        }
         mRecyclerView.setLayoutManager(gridManager);
         mRecyclerView.setHasFixedSize(true);
         Picasso.Builder picassoBuilder = new Picasso.Builder(this);
