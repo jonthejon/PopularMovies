@@ -2,8 +2,8 @@ package jonathanoliveira.org.popularmovies;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loadMoviesData(sortByPopularity);
+        String test = "test";
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_grid);
-        RecyclerView.LayoutManager gridManager = new GridLayoutManager(getApplicationContext(),2);
+        RecyclerView.LayoutManager gridManager = new GridLayoutManager(getApplicationContext(), 2);
         mRecyclerView.setLayoutManager(gridManager);
         mRecyclerView.setHasFixedSize(true);
         Picasso.Builder picassoBuilder = new Picasso.Builder(this);
@@ -44,14 +45,14 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
         new internetAsyncTask().execute(NetworkUtils.build_MD_API_Url(sortByPopularity));
     }
 
-
     @Override
     public void OnClickView(int position) {
         Movie movie = mGridAdapter.getMovie(position);
-        Intent intent = new Intent(this,MovieDetailsActivity.class);
-        intent.putExtra(Intent.EXTRA_TEXT,movie);
+        Intent intent = new Intent(this, MovieDetailsActivity.class);
+        intent.putExtra(Intent.EXTRA_TEXT, movie);
         startActivity(intent);
     }
+
 
     public class internetAsyncTask extends AsyncTask<URL, Void, Movie[]> {
         @Override
@@ -62,9 +63,10 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
 
             String rawJSONResult;
             Movie[] movieResult = null;
+
             try {
                 rawJSONResult = NetworkUtils.getResponseFromHttpUrl(urls[0]);
-                movieResult = JsonUtils.getSimpleWeatherStringsFromJson(MainActivity.this,rawJSONResult);
+                movieResult = JsonUtils.getSimpleWeatherStringsFromJson(MainActivity.this, rawJSONResult);
 
             } catch (IOException | JSONException ioe) {
                 ioe.printStackTrace();
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-       getMenuInflater().inflate(R.menu.settings_menu, menu);
+        getMenuInflater().inflate(R.menu.settings_menu, menu);
         return true;
     }
 
