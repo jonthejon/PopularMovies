@@ -16,50 +16,55 @@ public final class NetworkUtils {
 
     private static final String TAG = NetworkUtils.class.getSimpleName();
 
-    private static final String MOVIEDB_API_BASE_URL =
-            "https://api.themoviedb.org/3/discover/movie";
+//    private static final String MOVIEDB_API_BASE_URL =
+//            "https://api.themoviedb.org/3/discover/movie";
 
     private static final String MOVIEDB_PICASSO_BASE_URL =
             "http://image.tmdb.org/t/p/";
 
+    private static final String MOVIEDB_PICASSO_POPULAR_URL =
+            "https://api.themoviedb.org/3/movie/popular";
+    private static final String MOVIEDB_PICASSO_RATED_URL =
+            "https://api.themoviedb.org/3/movie/top_rated";
+
+
+
 /*
     QUERY EXAMPLE TO THE API
-    https://api.themoviedb.org/3/discover/movie?api_key=<<api_key>>&
-    // sort_by=popularity.desc&include_adult=false&include_video=false&page=1
+    https://api.themoviedb.org/3/movie/popular?api_key=fb4244705257100efa4f14811cb5a0ed&language=en-US&page=1
+    https://api.themoviedb.org/3/movie/top_rated?api_key=fb4244705257100efa4f14811cb5a0ed&language=en-US&page=1
 */
 
     private static final String JONATHAN_MOVIEDB_API_KEY = "fb4244705257100efa4f14811cb5a0ed";
 
     // The sort type that we want to return
-    private static final String popularityFormat = "popularity.desc";
-    private static final String ratingFormat = "vote_average.desc";
+//    private static final String popularityFormat = "popularity.desc";
+//    private static final String ratingFormat = "vote_average.desc";
     // The number of pages we want to return
     private static final int numPages = 1;
-    private static final String negate = "false";
+//    private static final String negate = "false";
+    private static final String language = "en-US";
 
     // The API_key query name
     final static String API_KEY = "api_key";
     // The SORT TYPE query name
-    final static String SORT_TYPE = "sort_by";
+//    final static String SORT_TYPE = "sort_by";
     // The ADULT FILM OPTION query name
-    final static String INCLUDE_ADULT_FILM_OPTION = "include_adult";
+//    final static String INCLUDE_ADULT_FILM_OPTION = "include_adult";
     // The VIDEO OPTION query name
-    final static String INCLUDE_VIDEO_OPTION = "include_video";
+//    final static String INCLUDE_VIDEO_OPTION = "include_video";
     // The NUMBER OF PAGES query name
     final static String PAGES_NUM = "page";
+    final static String LANGUAGE = "language";
     // The image type of poster for picasso url
     final static String DOWNLOAD_IMAGE_TYPE = "w185";
 
     public static URL build_MD_API_Url(boolean sortByPopularity) {
-        Uri uriQuery = Uri.parse(MOVIEDB_API_BASE_URL).buildUpon()
+        Uri uriQuery = Uri.parse(sortByPopularity ? MOVIEDB_PICASSO_POPULAR_URL: MOVIEDB_PICASSO_RATED_URL).buildUpon()
                 .appendQueryParameter(API_KEY,JONATHAN_MOVIEDB_API_KEY)
                 // completed: 16/01/17 apply a ternary to choose between the type of sort we will display
-                .appendQueryParameter(SORT_TYPE,sortByPopularity ? popularityFormat : ratingFormat)
-//                .appendQueryParameter(SORT_TYPE,popularityFormat)
-                .appendQueryParameter(INCLUDE_ADULT_FILM_OPTION,negate)
-                .appendQueryParameter(INCLUDE_VIDEO_OPTION,negate)
+                .appendQueryParameter(LANGUAGE,language)
                 .appendQueryParameter(PAGES_NUM,Integer.toString(numPages))
-                .appendQueryParameter("year","2017")
                 .build();
         URL url = null;
         try {
