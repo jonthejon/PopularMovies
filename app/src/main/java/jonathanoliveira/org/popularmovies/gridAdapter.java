@@ -47,8 +47,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
         View view = inflater.inflate(layoutIdForListItem,parent,shouldAttachToParentImmediately);
-        PosterViewHolder posterViewHolder = new PosterViewHolder(view);
-        return posterViewHolder;
+        return new PosterViewHolder(view);
     }
 
     @Override

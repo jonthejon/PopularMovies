@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
  * These utilities will be used to communicate with the weather servers.
  */
-public final class NetworkUtils {
+final class NetworkUtils {
 
     private static final String TAG = NetworkUtils.class.getSimpleName();
 
@@ -46,7 +46,7 @@ public final class NetworkUtils {
     private static final String language = "en-US";
 
     // The API_key query name
-    final static String API_KEY = "api_key";
+    private final static String API_KEY = "api_key";
     // The SORT TYPE query name
 //    final static String SORT_TYPE = "sort_by";
     // The ADULT FILM OPTION query name
@@ -54,12 +54,12 @@ public final class NetworkUtils {
     // The VIDEO OPTION query name
 //    final static String INCLUDE_VIDEO_OPTION = "include_video";
     // The NUMBER OF PAGES query name
-    final static String PAGES_NUM = "page";
-    final static String LANGUAGE = "language";
+    private final static String PAGES_NUM = "page";
+    private final static String LANGUAGE = "language";
     // The image type of poster for picasso url
-    final static String DOWNLOAD_IMAGE_TYPE = "w185";
+    private final static String DOWNLOAD_IMAGE_TYPE = "w185";
 
-    public static URL build_MD_API_Url(boolean sortByPopularity) {
+    static URL build_MD_API_Url(boolean sortByPopularity) {
         Uri uriQuery = Uri.parse(sortByPopularity ? MOVIEDB_PICASSO_POPULAR_URL: MOVIEDB_PICASSO_RATED_URL).buildUpon()
                 .appendQueryParameter(API_KEY,JONATHAN_MOVIEDB_API_KEY)
                 // completed: 16/01/17 apply a ternary to choose between the type of sort we will display
@@ -71,11 +71,12 @@ public final class NetworkUtils {
             url = new URL(uriQuery.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            return null;
         }
         return url;
     }
 
-    public static String build_Picasso_Url(String poster_path) {
+    static String build_Picasso_Url(String poster_path) {
         String url = MOVIEDB_PICASSO_BASE_URL;
         url += DOWNLOAD_IMAGE_TYPE;
         url += poster_path;
@@ -89,7 +90,7 @@ public final class NetworkUtils {
      * @return The contents of the HTTP response.
      * @throws IOException Related to network and stream reading
      */
-    public static String getResponseFromHttpUrl(URL url) throws IOException {
+    static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
             InputStream in = urlConnection.getInputStream();

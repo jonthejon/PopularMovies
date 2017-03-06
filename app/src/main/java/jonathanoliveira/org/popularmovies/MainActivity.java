@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
     public class InternetAsyncTask extends AsyncTask<URL, Void, Movie[]> {
         @Override
         protected Movie[] doInBackground(URL... urls) {
-            if (urls.length == 0) {
+            if (urls.length == 0 || urls[0] == null) {
                 return null;
             }
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
 
             try {
                 rawJSONResult = NetworkUtils.getResponseFromHttpUrl(urls[0]);
-                movieResult = JsonUtils.getSimpleWeatherStringsFromJson(MainActivity.this, rawJSONResult);
+                movieResult = JsonUtils.getSimpleWeatherStringsFromJson(rawJSONResult);
 
             } catch (IOException | JSONException ioe) {
                 ioe.printStackTrace();

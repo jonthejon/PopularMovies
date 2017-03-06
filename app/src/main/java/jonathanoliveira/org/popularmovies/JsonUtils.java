@@ -11,12 +11,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.HttpURLConnection;
-
 /**
  * Utility functions to handle OpenWeatherMap JSON data.
  */
-public final class JsonUtils {
+final class JsonUtils {
 
     /**
      * This method parses JSON from a web response and returns an array of Strings
@@ -32,14 +30,14 @@ public final class JsonUtils {
      *
      * @throws JSONException If JSON data cannot be properly parsed
      */
-    public static Movie[] getSimpleWeatherStringsFromJson(Context context, String forecastJsonStr)
+    static Movie[] getSimpleWeatherStringsFromJson(String forecastJsonStr)
             throws JSONException {
 
         final String RES_LIST = "results";
 
 
         final String FAIL_MESSAGE_CODE = "cod";
-        Movie[] movies = null;
+        Movie[] movies;
 
         JSONObject forecastJson = new JSONObject(forecastJsonStr);
 
@@ -79,7 +77,7 @@ public final class JsonUtils {
      *
      * @return An array of ContentValues parsed from the JSON.
      */
-    public static ContentValues[] getFullWeatherDataFromJson(Context context, String forecastJsonStr) {
+    static ContentValues[] getFullWeatherDataFromJson(Context context, String forecastJsonStr) {
         /** This will be implemented in a future lesson **/
         return null;
     }
