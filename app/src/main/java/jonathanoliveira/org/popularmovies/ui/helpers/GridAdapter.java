@@ -1,4 +1,4 @@
-package jonathanoliveira.org.popularmovies;
+package jonathanoliveira.org.popularmovies.ui.helpers;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+
+import jonathanoliveira.org.popularmovies.Movie;
+import jonathanoliveira.org.popularmovies.NetworkUtils;
+import jonathanoliveira.org.popularmovies.R;
 
 /**
  * Created by JonathanOliveira on 12/01/17.

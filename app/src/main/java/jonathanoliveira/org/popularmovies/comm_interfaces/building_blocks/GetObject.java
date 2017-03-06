@@ -7,7 +7,7 @@ import jonathanoliveira.org.popularmovies.Movie;
  * Created by JonathanOliveira on 06/03/17.
  */
 
-public interface RetrieveObject {
+public interface GetObject {
 
     Movie getObjectFromPresenter();
 

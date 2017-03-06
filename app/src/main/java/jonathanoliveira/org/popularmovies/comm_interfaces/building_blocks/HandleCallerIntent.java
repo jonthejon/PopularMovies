@@ -6,7 +6,7 @@ import android.content.Intent;
  * Created by JonathanOliveira on 06/03/17.
  */
 
-public interface HandleCallerIntent extends RetrieveObject {
+public interface HandleCallerIntent extends GetObject {
 
     void operateOnCallerIntent(Intent callerIntent);
 
