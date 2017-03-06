@@ -1,4 +1,4 @@
-package jonathanoliveira.org.popularmovies.comm_interfaces;
+package jonathanoliveira.org.popularmovies.comm_interfaces.building_blocks;
 
 
 import jonathanoliveira.org.popularmovies.Movie;
@@ -7,7 +7,7 @@ import jonathanoliveira.org.popularmovies.Movie;
  * Created by JonathanOliveira on 06/03/17.
  */
 
-public interface GetObject_Presenter {
+public interface RetrieveObject {
 
     Movie getObjectFromPresenter();
 

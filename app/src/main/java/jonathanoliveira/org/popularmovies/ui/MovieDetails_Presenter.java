@@ -3,19 +3,19 @@ package jonathanoliveira.org.popularmovies.ui;
 import android.content.Intent;
 
 import jonathanoliveira.org.popularmovies.Movie;
-import jonathanoliveira.org.popularmovies.comm_interfaces.Base_Views;
-import jonathanoliveira.org.popularmovies.comm_interfaces.CallerIntent_Presenter;
+import jonathanoliveira.org.popularmovies.comm_interfaces.MovieDetails_Activity_Interface;
+import jonathanoliveira.org.popularmovies.comm_interfaces.MovieDetails_Presenter_Interface;
 
 /**
  * Created by JonathanOliveira on 06/03/17.
  */
 
-public class MovieDetails_Presenter implements CallerIntent_Presenter {
+public class MovieDetails_Presenter implements MovieDetails_Presenter_Interface {
 
-    private Base_Views activity;
+    private MovieDetails_Activity_Interface activity;
     private Movie movie;
 
-    public MovieDetails_Presenter(Base_Views activity) {
+    public MovieDetails_Presenter(MovieDetails_Activity_Interface activity) {
         this.activity = activity;
     }
 

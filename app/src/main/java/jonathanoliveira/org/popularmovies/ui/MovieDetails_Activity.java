@@ -10,17 +10,17 @@ import com.squareup.picasso.Picasso;
 import jonathanoliveira.org.popularmovies.Movie;
 import jonathanoliveira.org.popularmovies.NetworkUtils;
 import jonathanoliveira.org.popularmovies.R;
-import jonathanoliveira.org.popularmovies.comm_interfaces.Base_Views;
-import jonathanoliveira.org.popularmovies.comm_interfaces.CallerIntent_Presenter;
+import jonathanoliveira.org.popularmovies.comm_interfaces.MovieDetails_Activity_Interface;
+import jonathanoliveira.org.popularmovies.comm_interfaces.MovieDetails_Presenter_Interface;
 
-public class MovieDetails_Activity extends AppCompatActivity implements Base_Views {
+public class MovieDetails_Activity extends AppCompatActivity implements MovieDetails_Activity_Interface {
 
     private TextView movieNameTextView;
     private ImageView movieImageView;
     private TextView movieOverviewTextView;
     private TextView movieRatingTextView;
     private TextView movieRDTextView;
-    private CallerIntent_Presenter presenter;
+    private MovieDetails_Presenter_Interface presenter;
 
 
     @Override
