@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
  * These utilities will be used to communicate with the weather servers.
  */
-final class NetworkUtils {
+public final class NetworkUtils {
 
     private static final String TAG = NetworkUtils.class.getSimpleName();
 
@@ -59,7 +59,7 @@ final class NetworkUtils {
     // The image type of poster for picasso url
     private final static String DOWNLOAD_IMAGE_TYPE = "w185";
 
-    static URL build_MD_API_Url(boolean sortByPopularity) {
+    public static URL build_MD_API_Url(boolean sortByPopularity) {
         Uri uriQuery = Uri.parse(sortByPopularity ? MOVIEDB_PICASSO_POPULAR_URL: MOVIEDB_PICASSO_RATED_URL).buildUpon()
                 .appendQueryParameter(API_KEY,JONATHAN_MOVIEDB_API_KEY)
                 // completed: 16/01/17 apply a ternary to choose between the type of sort we will display
@@ -76,7 +76,7 @@ final class NetworkUtils {
         return url;
     }
 
-    static String build_Picasso_Url(String poster_path) {
+    public static String build_Picasso_Url(String poster_path) {
         String url = MOVIEDB_PICASSO_BASE_URL;
         url += DOWNLOAD_IMAGE_TYPE;
         url += poster_path;
@@ -90,7 +90,7 @@ final class NetworkUtils {
      * @return The contents of the HTTP response.
      * @throws IOException Related to network and stream reading
      */
-    static String getResponseFromHttpUrl(URL url) throws IOException {
+    public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
             InputStream in = urlConnection.getInputStream();

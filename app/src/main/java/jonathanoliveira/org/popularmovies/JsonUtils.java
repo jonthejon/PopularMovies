@@ -14,7 +14,7 @@ import org.json.JSONObject;
 /**
  * Utility functions to handle OpenWeatherMap JSON data.
  */
-final class JsonUtils {
+public final class JsonUtils {
 
     /**
      * This method parses JSON from a web response and returns an array of Strings
@@ -30,7 +30,7 @@ final class JsonUtils {
      *
      * @throws JSONException If JSON data cannot be properly parsed
      */
-    static Movie[] getSimpleWeatherStringsFromJson(String forecastJsonStr)
+    public static Movie[] getSimpleWeatherStringsFromJson(String forecastJsonStr)
             throws JSONException {
 
         final String RES_LIST = "results";

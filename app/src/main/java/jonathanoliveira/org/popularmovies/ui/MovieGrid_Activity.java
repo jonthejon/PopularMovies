@@ -1,4 +1,4 @@
-package jonathanoliveira.org.popularmovies;
+package jonathanoliveira.org.popularmovies.ui;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -18,7 +18,13 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity implements GridAdapter.GridItemClickListener {
+import jonathanoliveira.org.popularmovies.GridAdapter;
+import jonathanoliveira.org.popularmovies.JsonUtils;
+import jonathanoliveira.org.popularmovies.Movie;
+import jonathanoliveira.org.popularmovies.NetworkUtils;
+import jonathanoliveira.org.popularmovies.R;
+
+public class MovieGrid_Activity extends AppCompatActivity implements GridAdapter.GridItemClickListener {
 
     private RecyclerView mRecyclerView;
     private GridAdapter mGridAdapter;
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
     @Override
     public void OnClickView(int position) {
         Movie movie = mGridAdapter.getMovie(position);
-        Intent intent = new Intent(this, MovieDetailsActivity.class);
+        Intent intent = new Intent(this, MovieDetails_Activity.class);
         intent.putExtra(Intent.EXTRA_TEXT, movie);
         startActivity(intent);
     }
@@ -86,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements GridAdapter.GridI
             if (movieResult != null) {
                 mGridAdapter.setMoviesArr(movieResult);
             } else {
-                Toast.makeText(MainActivity.this, "Something went terribly wrong! Please check your internet connection and try again.", Toast.LENGTH_LONG).show();
+                Toast.makeText(MovieGrid_Activity.this, "Something went terribly wrong! Please check your internet connection and try again.", Toast.LENGTH_LONG).show();
             }
         }
     }
