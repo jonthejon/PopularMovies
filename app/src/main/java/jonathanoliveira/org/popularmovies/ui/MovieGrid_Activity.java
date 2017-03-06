@@ -1,30 +1,24 @@
 package jonathanoliveira.org.popularmovies.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.net.URL;
-
-import jonathanoliveira.org.popularmovies.JsonUtils;
 import jonathanoliveira.org.popularmovies.Movie;
 import jonathanoliveira.org.popularmovies.NetworkUtils;
 import jonathanoliveira.org.popularmovies.R;
 import jonathanoliveira.org.popularmovies.comm_interfaces.MovieGrid_Activity_Interface;
 import jonathanoliveira.org.popularmovies.comm_interfaces.MovieGrid_Presenter_Interface;
 import jonathanoliveira.org.popularmovies.ui.helpers.GridAdapter;
+import jonathanoliveira.org.popularmovies.ui.helpers.InternetAsyncTask;
 
 public class MovieGrid_Activity extends AppCompatActivity implements GridAdapter.GridItemClickListener, MovieGrid_Activity_Interface {
 
@@ -40,8 +34,7 @@ public class MovieGrid_Activity extends AppCompatActivity implements GridAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         presenter = new MovieGrid_Presenter(this);
-        loadMoviesData(sortByPopularity);
-        String test = "test";
+        loadAsyncTask();
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_grid);
         RecyclerView.LayoutManager gridManager;
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -57,16 +50,13 @@ public class MovieGrid_Activity extends AppCompatActivity implements GridAdapter
         mRecyclerView.setAdapter(mGridAdapter);
     }
 
-    // completed: 16/01/17 change loadMoviesData() and NetworkUtils.build_MD_API_Url() to receive a boolean concerning the type of information
-    // <<<<<PRESENTER>>>>>
-//    public void loadMoviesData(boolean sortByPopularity) {
-//        new InternetAsyncTask().execute(NetworkUtils.build_MD_API_Url(sortByPopularity));
-//    }
-
-
     @Override
-    public void loadMoviesData(boolean sortByPopularity) {
-        new InternetAsyncTask().execute(NetworkUtils.build_MD_API_Url(sortByPopularity));
+    public void loadAsyncTask() {
+        loadMoviesData();
+    }
+
+    public void loadMoviesData() {
+        new InternetAsyncTask(getPresenter()).execute(NetworkUtils.build_MD_API_Url(this.sortByPopularity));
     }
 
     @Override
@@ -75,38 +65,6 @@ public class MovieGrid_Activity extends AppCompatActivity implements GridAdapter
         Intent intent = new Intent(this, MovieDetails_Activity.class);
         intent.putExtra(Intent.EXTRA_TEXT, movie);
         startActivity(intent);
-    }
-
-
-    // <<<<<PRESENTER>>>>>
-    public class InternetAsyncTask extends AsyncTask<URL, Void, Movie[]> {
-        @Override
-        protected Movie[] doInBackground(URL... urls) {
-            if (urls.length == 0 || urls[0] == null) {
-                return null;
-            }
-
-            String rawJSONResult;
-            Movie[] movieResult = null;
-
-            try {
-                rawJSONResult = NetworkUtils.getResponseFromHttpUrl(urls[0]);
-                movieResult = JsonUtils.getSimpleWeatherStringsFromJson(rawJSONResult);
-
-            } catch (IOException | JSONException ioe) {
-                ioe.printStackTrace();
-            }
-            return movieResult;
-        }
-
-        @Override
-        protected void onPostExecute(Movie[] movieResult) {
-            if (movieResult != null) {
-                mGridAdapter.setMoviesArr(movieResult);
-            } else {
-                Toast.makeText(MovieGrid_Activity.this, "Something went terribly wrong! Please check your internet connection and try again.", Toast.LENGTH_LONG).show();
-            }
-        }
     }
 
     @Override
@@ -126,12 +84,27 @@ public class MovieGrid_Activity extends AppCompatActivity implements GridAdapter
     }
 
     @Override
-    public void setObjectStateBoolean(Boolean bool) {
+    public void setObjectStateBoolean(boolean bool) {
         this.sortByPopularity = bool;
     }
 
     @Override
-    public Boolean getObjectStateBoolean() {
+    public boolean getObjectStateBoolean() {
         return this.sortByPopularity;
+    }
+
+    @Override
+    public MovieGrid_Presenter_Interface getPresenter() {
+        return this.presenter;
+    }
+
+    @Override
+    public GridAdapter getRecyclerViewAdapter() {
+        return mGridAdapter;
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 }

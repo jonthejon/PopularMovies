@@ -10,6 +10,7 @@ import java.net.URL;
 import jonathanoliveira.org.popularmovies.JsonUtils;
 import jonathanoliveira.org.popularmovies.Movie;
 import jonathanoliveira.org.popularmovies.NetworkUtils;
+import jonathanoliveira.org.popularmovies.comm_interfaces.MovieGrid_Presenter_Interface;
 
 /**
  * Created by JonathanOliveira on 06/03/17.
@@ -17,9 +18,10 @@ import jonathanoliveira.org.popularmovies.NetworkUtils;
 
 public class InternetAsyncTask extends AsyncTask<URL, Void, Movie[]> {
 
-//    private GridAdapter mGridAdapter;
+    private MovieGrid_Presenter_Interface presenter;
 
-    public InternetAsyncTask(GridAdapter mGridAdapter) {
+    public InternetAsyncTask(MovieGrid_Presenter_Interface presenter) {
+        this.presenter = presenter;
     }
 
     @Override
@@ -44,9 +46,9 @@ public class InternetAsyncTask extends AsyncTask<URL, Void, Movie[]> {
     @Override
     protected void onPostExecute(Movie[] movieResult) {
         if (movieResult != null) {
-//            mGridAdapter.setMoviesArr(movieResult);
+            presenter.updateAdapter(movieResult);
         } else {
-//            Toast.makeText(MovieGrid_Activity.this, "Something went terribly wrong! Please check your internet connection and try again.", Toast.LENGTH_LONG).show();
+            presenter.writeToast("Something went terribly wrong! Please check your internet connection and try again.");
         }
     }
 }

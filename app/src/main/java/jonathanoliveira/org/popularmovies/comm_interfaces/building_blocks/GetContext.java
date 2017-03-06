@@ -1,13 +1,13 @@
 package jonathanoliveira.org.popularmovies.comm_interfaces.building_blocks;
 
+import android.content.Context;
+
 /**
  * Created by JonathanOliveira on 06/03/17.
  */
 
-public interface GetSetObjectStateBoolean {
+public interface GetContext {
 
-    void setObjectStateBoolean(boolean bool);
-
-    boolean getObjectStateBoolean();
+    Context getContext();
 
 }

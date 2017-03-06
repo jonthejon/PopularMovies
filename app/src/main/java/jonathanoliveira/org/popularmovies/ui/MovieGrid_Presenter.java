@@ -1,7 +1,9 @@
 package jonathanoliveira.org.popularmovies.ui;
 
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import jonathanoliveira.org.popularmovies.Movie;
 import jonathanoliveira.org.popularmovies.R;
 import jonathanoliveira.org.popularmovies.comm_interfaces.MovieGrid_Activity_Interface;
 import jonathanoliveira.org.popularmovies.comm_interfaces.MovieGrid_Presenter_Interface;
@@ -30,10 +32,19 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
                     item.setTitle(R.string.rated);
                     activity.setObjectStateBoolean(true);
                 }
-                // THIS IS WRONG!! LOADMOVIES SHOULD NOT BE INSIDE THIS INTERFACE
-                activity.loadMoviesData(activity.getObjectStateBoolean());
+                activity.loadAsyncTask();
                 return true;
         }
         return true;
+    }
+
+    @Override
+    public void updateAdapter(Movie[] movieArr) {
+        activity.getRecyclerViewAdapter().setMoviesArr(movieArr);
+    }
+
+    @Override
+    public void writeToast(String toastText) {
+        Toast.makeText(activity.getContext(), toastText, Toast.LENGTH_LONG).show();
     }
 }
