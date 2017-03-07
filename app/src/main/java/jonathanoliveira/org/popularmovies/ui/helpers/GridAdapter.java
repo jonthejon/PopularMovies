@@ -13,35 +13,36 @@ import com.squareup.picasso.Picasso;
 import jonathanoliveira.org.popularmovies.Movie;
 import jonathanoliveira.org.popularmovies.NetworkUtils;
 import jonathanoliveira.org.popularmovies.R;
+import jonathanoliveira.org.popularmovies.comm_interfaces.GridAdapter_Interface;
+import jonathanoliveira.org.popularmovies.comm_interfaces.building_blocks.AdapterClickHandlingCallback;
 
 /**
  * Created by JonathanOliveira on 12/01/17.
  */
 
-public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHolder> {
+// REFERENCES TO ADAPTER MUST BE OF GRIDADAPTER TYPE INSTEAD OF INTERFACE TYPE IN ORDER FOR ADAPTER TO PROPERLY WORK
+public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHolder> implements GridAdapter_Interface {
 
     private Movie[] moviesArr;
-    final private GridItemClickListener myInterface;
+    final private AdapterClickHandlingCallback presenter;
     private Picasso picasso;
 
 
-    public GridAdapter(GridItemClickListener myInterface, Picasso picasso) {
-        this.myInterface = myInterface;
-        this.picasso = picasso;
+    public GridAdapter(AdapterClickHandlingCallback presenter, Context context) {
+        this.presenter = presenter;
+        picasso = Picasso.with(context);
     }
 
-    public void setMoviesArr(Movie[] moviesArr) {
+    @Override
+    public void notifyAdapterForDataChange(Movie[] moviesArr) {
         this.moviesArr = null;
         this.moviesArr = moviesArr;
         notifyDataSetChanged();
     }
 
-    public Movie getMovie(int position) {
+    @Override
+    public Movie getAdapterDataSingleItem(int position) {
         return moviesArr[position];
-    }
-
-    public interface GridItemClickListener {
-        void OnClickView(int position);
     }
 
     @Override
@@ -49,8 +50,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
         Context context = parent.getContext();
         int layoutIdForListItem = R.layout.poster_view_layout;
         LayoutInflater inflater = LayoutInflater.from(context);
-        boolean shouldAttachToParentImmediately = false;
-        View view = inflater.inflate(layoutIdForListItem,parent,shouldAttachToParentImmediately);
+        View view = inflater.inflate(layoutIdForListItem,parent,false);
         return new PosterViewHolder(view);
     }
 
@@ -69,8 +69,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
         return moviesArr.length;
     }
 
-
-    class PosterViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
+    public class PosterViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
 
         ImageView poster;
 
@@ -92,7 +91,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
         public void onClick(View v) {
             int position = this.getAdapterPosition();
 //            String movieName = this.poster.getContentDescription().toString();
-            myInterface.OnClickView(position);
+            presenter.onAdapterClickCallback(position);
         }
     }
 

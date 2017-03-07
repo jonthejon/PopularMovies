@@ -10,32 +10,41 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.squareup.picasso.Picasso;
-
-import jonathanoliveira.org.popularmovies.Movie;
-import jonathanoliveira.org.popularmovies.NetworkUtils;
 import jonathanoliveira.org.popularmovies.R;
 import jonathanoliveira.org.popularmovies.comm_interfaces.MovieGrid_Activity_Interface;
 import jonathanoliveira.org.popularmovies.comm_interfaces.MovieGrid_Presenter_Interface;
 import jonathanoliveira.org.popularmovies.ui.helpers.GridAdapter;
-import jonathanoliveira.org.popularmovies.ui.helpers.InternetAsyncTask;
 
-public class MovieGrid_Activity extends AppCompatActivity implements GridAdapter.GridItemClickListener, MovieGrid_Activity_Interface {
+public class MovieGrid_Activity extends AppCompatActivity implements MovieGrid_Activity_Interface {
 
     private RecyclerView mRecyclerView;
+    // REFERENCES TO ADAPTER MUST BE OF GRIDADAPTER TYPE INSTEAD OF INTERFACE TYPE IN ORDER FOR ADAPTER TO PROPERLY WORK
     private GridAdapter mGridAdapter;
-    private Picasso picasso;
     private boolean sortByPopularity = true;
     private MovieGrid_Presenter_Interface presenter;
-    // completed: 16/01/17 implement the boolean that will inform which type of sort will be displayed
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         presenter = new MovieGrid_Presenter(this);
-        loadAsyncTask();
-        mRecyclerView = (RecyclerView) findViewById(R.id.rv_grid);
+        presenter.loadAsyncTask();
+        wireViews();
+        bindAdapter(setAdapter(setLayoutManager()));
+    }
+
+    @Override
+    public RecyclerView.Adapter setAdapter(boolean hasLayoutManager) {
+        return mGridAdapter = new GridAdapter(presenter, this);
+    }
+
+    @Override
+    public void bindAdapter(RecyclerView.Adapter adapter) {
+        mRecyclerView.setAdapter(mGridAdapter);
+    }
+
+    @Override
+    public boolean setLayoutManager() {
         RecyclerView.LayoutManager gridManager;
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             gridManager = new GridLayoutManager(getApplicationContext(), 2);
@@ -44,26 +53,16 @@ public class MovieGrid_Activity extends AppCompatActivity implements GridAdapter
         }
         mRecyclerView.setLayoutManager(gridManager);
         mRecyclerView.setHasFixedSize(true);
-        Picasso.Builder picassoBuilder = new Picasso.Builder(this);
-        this.picasso = picassoBuilder.build();
-        mGridAdapter = new GridAdapter(this, this.picasso);
-        mRecyclerView.setAdapter(mGridAdapter);
+        return true;
     }
 
     @Override
-    public void loadAsyncTask() {
-        loadMoviesData();
-    }
-
-    public void loadMoviesData() {
-        new InternetAsyncTask(getPresenter()).execute(NetworkUtils.build_MD_API_Url(this.sortByPopularity));
+    public void wireViews() {
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_grid);
     }
 
     @Override
-    public void OnClickView(int position) {
-        Movie movie = mGridAdapter.getMovie(position);
-        Intent intent = new Intent(this, MovieDetails_Activity.class);
-        intent.putExtra(Intent.EXTRA_TEXT, movie);
+    public void startNewActivityWithIntent(Intent intent) {
         startActivity(intent);
     }
 
