@@ -58,7 +58,7 @@ public class Manager implements Manager_Interface, CoreToDataManager_Interface {
 
     @Override
     public void errorAPICallback() {
-        core.returnDataError();
+        Core.getCoreInstance().returnDataError();
     }
 
 

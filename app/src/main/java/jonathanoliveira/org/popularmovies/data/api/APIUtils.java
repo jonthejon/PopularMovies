@@ -3,11 +3,12 @@ package jonathanoliveira.org.popularmovies.data.api;
 import android.net.Uri;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Scanner;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public final class APIUtils {
 
@@ -71,7 +72,25 @@ public final class APIUtils {
 
 
     public static String getResponseFromHttpUrl(URL url) throws IOException {
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        Response okResponse = null;
+        String response = null;
+
+        try {
+            okResponse = client.newCall(request).execute();
+        } finally {
+            if (okResponse != null) {
+                response = okResponse.body().string();
+            }
+        }
+
+        return response;
+
+/*        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
             InputStream in = urlConnection.getInputStream();
 
@@ -86,6 +105,6 @@ public final class APIUtils {
             }
         } finally {
             urlConnection.disconnect();
-        }
+        }*/
     }
 }

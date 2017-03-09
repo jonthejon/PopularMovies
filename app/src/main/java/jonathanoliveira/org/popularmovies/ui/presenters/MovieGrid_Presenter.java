@@ -2,13 +2,13 @@ package jonathanoliveira.org.popularmovies.ui.presenters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import jonathanoliveira.org.popularmovies.core.beans.Movie;
 import jonathanoliveira.org.popularmovies.R;
 import jonathanoliveira.org.popularmovies.core.Core;
 import jonathanoliveira.org.popularmovies.core.Core_Interface;
+import jonathanoliveira.org.popularmovies.core.beans.Movie;
 import jonathanoliveira.org.popularmovies.ui.views.MovieDetails_Activity;
 import jonathanoliveira.org.popularmovies.ui.views.MovieGrid_Activity_Interface;
 
@@ -61,9 +61,10 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
     }
 
     @Override
-    public void writeToast() {
-        String toastText = "Something went terribly wrong! Please check your internet connection and try again.";
-        Toast.makeText(activity.getContext(), toastText, Toast.LENGTH_LONG).show();
+    public void writeError() {
+        Snackbar.make(activity.getBaseView(), R.string.snackbar_text, Snackbar.LENGTH_LONG).show();
+//        String toastText = "Something went terribly wrong! Please check your internet connection and try again.";
+//        Toast.makeText(activity.getContext(), toastText, Toast.LENGTH_LONG).show();
     }
 
     @Override

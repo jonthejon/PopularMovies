@@ -9,11 +9,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import jonathanoliveira.org.popularmovies.R;
+import jonathanoliveira.org.popularmovies.ui.helpers.GridAdapter;
 import jonathanoliveira.org.popularmovies.ui.presenters.MovieGrid_Presenter;
 import jonathanoliveira.org.popularmovies.ui.presenters.MovieGrid_Presenter_Interface;
-import jonathanoliveira.org.popularmovies.ui.helpers.GridAdapter;
 
 public class MovieGrid_Activity extends AppCompatActivity implements MovieGrid_Activity_Interface {
 
@@ -105,5 +106,10 @@ public class MovieGrid_Activity extends AppCompatActivity implements MovieGrid_A
     @Override
     public Context getContext() {
         return this;
+    }
+
+    @Override
+    public View getBaseView() {
+        return findViewById(R.id.activity_main);
     }
 }

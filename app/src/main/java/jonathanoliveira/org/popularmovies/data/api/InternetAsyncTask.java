@@ -29,7 +29,8 @@ public class InternetAsyncTask extends AsyncTask<URL, Void, String> {
             rawJSONResult = APIUtils.getResponseFromHttpUrl(urls[0]);
 
         } catch (IOException ioe) {
-            ioe.printStackTrace();
+            apiHandler.serveAPIError();
+//            ioe.printStackTrace();
         }
         return rawJSONResult;
     }

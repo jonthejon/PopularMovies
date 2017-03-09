@@ -42,7 +42,7 @@ public class Core implements Core_Interface {
 
     @Override
     public void returnDataError() {
-        coreToAdapterInterface.writeToast();
+        coreToAdapterInterface.writeError();
     }
 
     @Override

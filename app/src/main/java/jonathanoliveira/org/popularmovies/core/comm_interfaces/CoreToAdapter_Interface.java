@@ -10,6 +10,6 @@ public interface CoreToAdapter_Interface {
 
     void updateAdapter(Movie[] movieResult);
 
-    void writeToast();
+    void writeError();
 
 }
