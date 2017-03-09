@@ -10,14 +10,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MovieGrid_Activity">
+        <activity android:name=".ui.views.MovieGrid_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MovieDetails_Activity"></activity>
+        <activity android:name=".ui.views.MovieDetails_Activity"></activity>
     </application>
 
 </manifest>

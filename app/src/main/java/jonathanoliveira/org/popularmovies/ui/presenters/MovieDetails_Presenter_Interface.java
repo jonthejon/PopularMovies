@@ -1,0 +1,17 @@
+package jonathanoliveira.org.popularmovies.ui.presenters;
+
+import android.content.Intent;
+
+import jonathanoliveira.org.popularmovies.core.beans.Movie;
+
+/**
+ * Created by JonathanOliveira on 06/03/17.
+ */
+
+public interface MovieDetails_Presenter_Interface {
+
+    void operateOnCallerIntent(Intent callerIntent);
+
+    Movie getObjectFromPresenter();
+
+}

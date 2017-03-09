@@ -10,11 +10,10 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-import jonathanoliveira.org.popularmovies.Movie;
-import jonathanoliveira.org.popularmovies.NetworkUtils;
 import jonathanoliveira.org.popularmovies.R;
-import jonathanoliveira.org.popularmovies.comm_interfaces.GridAdapter_Interface;
-import jonathanoliveira.org.popularmovies.comm_interfaces.building_blocks.AdapterClickHandlingCallback;
+import jonathanoliveira.org.popularmovies.core.beans.Movie;
+import jonathanoliveira.org.popularmovies.data.api.APIUtils;
+import jonathanoliveira.org.popularmovies.ui.presenters.MovieGrid_Presenter_Interface;
 
 /**
  * Created by JonathanOliveira on 12/01/17.
@@ -24,11 +23,11 @@ import jonathanoliveira.org.popularmovies.comm_interfaces.building_blocks.Adapte
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHolder> implements GridAdapter_Interface {
 
     private Movie[] moviesArr;
-    final private AdapterClickHandlingCallback presenter;
+    final private MovieGrid_Presenter_Interface presenter;
     private Picasso picasso;
 
 
-    public GridAdapter(AdapterClickHandlingCallback presenter, Context context) {
+    public GridAdapter(MovieGrid_Presenter_Interface presenter, Context context) {
         this.presenter = presenter;
         picasso = Picasso.with(context);
     }
@@ -57,7 +56,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
     @Override
     public void onBindViewHolder(PosterViewHolder holder, int position) {
         String movieName = moviesArr[position].getMovie_title();
-        String completePosterPath = NetworkUtils.build_Picasso_Url(moviesArr[position].getPoster_path());
+        String completePosterPath = APIUtils.build_Picasso_Url(moviesArr[position].getPoster_path());
         holder.bindData(movieName, completePosterPath);
     }
 
@@ -90,7 +89,6 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PosterViewHold
         @Override
         public void onClick(View v) {
             int position = this.getAdapterPosition();
-//            String movieName = this.poster.getContentDescription().toString();
             presenter.onAdapterClickCallback(position);
         }
     }
