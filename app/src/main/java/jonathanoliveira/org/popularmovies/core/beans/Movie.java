@@ -1,12 +1,13 @@
 package jonathanoliveira.org.popularmovies.core.beans;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by JonathanOliveira on 13/01/17.
  */
 
-public class Movie implements Serializable {
+public class Movie implements Parcelable {
 
     private String poster_path;
     private String movie_title;
@@ -28,6 +29,14 @@ public class Movie implements Serializable {
 
     public Movie(String poster_path, String movie_title, String overview) {
         this(movie_title,poster_path,overview,"Release date not available",0.0);
+    }
+
+    protected Movie(Parcel source) {
+        this.poster_path = source.readString();
+        this.movie_title = source.readString();
+        this.overview = source.readString();
+        this.release_date = source.readString();
+        this.vote_average = source.readDouble();
     }
 
     public Movie(String poster_path, String movie_title, String overview, String release_date, double vote_average) {
@@ -87,4 +96,30 @@ public class Movie implements Serializable {
                 ", release_date='" + release_date + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(poster_path);
+        dest.writeString(movie_title);
+        dest.writeString(overview);
+        dest.writeString(release_date);
+        dest.writeDouble(vote_average);
+    }
+
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel source) {
+            return new Movie(source);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[0];
+        }
+    };
 }

@@ -56,7 +56,7 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
     @Override
     public Intent createIntent(Context context, Movie extraObject) {
         Intent intent = new Intent(context, MovieDetails_Activity.class);
-        intent.putExtra(Intent.EXTRA_TEXT, extraObject);
+        intent.putExtra(Intent.EXTRA_TEMPLATE, extraObject);
         return intent;
     }
 

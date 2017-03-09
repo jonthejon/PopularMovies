@@ -20,8 +20,8 @@ public class MovieDetails_Presenter implements MovieDetails_Presenter_Interface 
 
     @Override
     public void operateOnCallerIntent(Intent callerIntent) {
-        if (callerIntent.hasExtra(Intent.EXTRA_TEXT)) {
-            movie = (Movie) callerIntent.getSerializableExtra(Intent.EXTRA_TEXT);
+        if (callerIntent.hasExtra(Intent.EXTRA_TEMPLATE)) {
+            movie = callerIntent.getParcelableExtra(Intent.EXTRA_TEMPLATE);
             activity.bindDataToViews();
         }
     }
