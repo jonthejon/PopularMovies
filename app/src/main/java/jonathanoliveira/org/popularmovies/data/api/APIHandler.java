@@ -1,5 +1,9 @@
 package jonathanoliveira.org.popularmovies.data.api;
 
+import android.content.Context;
+import android.widget.ImageView;
+
+import jonathanoliveira.org.popularmovies.core.comm_interfaces.CoreToPresenter_Interface;
 import jonathanoliveira.org.popularmovies.data.manager.Manager;
 
 /**
@@ -17,6 +21,14 @@ public class APIHandler implements APIHandler_Interface {
     }
 
     @Override
+    public void bindPicassoToView(CoreToPresenter_Interface presenter, String moviePosterPath) {
+        String moviePosterURLString = APIUtils.build_Picasso_Url(moviePosterPath);
+        Context activityContext = presenter.getContext();
+        ImageView posterView = presenter.getImageView();
+        new PicassoHandler().bindPicassoToView(activityContext, moviePosterURLString, posterView);
+    }
+
+    @Override
     public void serveAPIResult(String rawJSONResult) {
         Manager.getManagerInstance().dataAPICallback(rawJSONResult);
     }
@@ -25,4 +37,5 @@ public class APIHandler implements APIHandler_Interface {
     public void serveAPIError() {
         Manager.getManagerInstance().errorAPICallback();
     }
+
 }

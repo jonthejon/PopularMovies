@@ -21,4 +21,6 @@ public interface MovieGrid_Presenter_Interface extends CoreToAdapter_Interface {
 
     Intent createIntent(Context context, Movie extraObject);
 
+    Context getContext();
+
 }

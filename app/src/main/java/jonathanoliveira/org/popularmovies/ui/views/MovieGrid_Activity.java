@@ -37,7 +37,7 @@ public class MovieGrid_Activity extends AppCompatActivity implements MovieGrid_A
 
     @Override
     public GridAdapter setAdapter() {
-        return mGridAdapter = new GridAdapter(presenter, this);
+        return mGridAdapter = new GridAdapter(presenter);
     }
 
     @Override

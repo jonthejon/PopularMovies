@@ -26,7 +26,7 @@ public class InternetAsyncTask extends AsyncTask<URL, Void, String> {
         String rawJSONResult = null;
 
         try {
-            rawJSONResult = APIUtils.getResponseFromHttpUrl(urls[0]);
+            rawJSONResult = InternetConnection.getResponseFromHttpUrl(urls[0]);
 
         } catch (IOException ioe) {
             apiHandler.serveAPIError();

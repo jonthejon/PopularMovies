@@ -14,4 +14,6 @@ public interface MovieDetails_Presenter_Interface {
 
     Movie getObjectFromPresenter();
 
+    void bindViewWithPicasso(String moviePosterPath);
+
 }

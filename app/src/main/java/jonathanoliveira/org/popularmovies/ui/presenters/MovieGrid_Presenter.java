@@ -75,4 +75,8 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
         core.getData(core.getManagerAPICallName());
     }
 
+    @Override
+    public Context getContext() {
+        return activity.getContext();
+    }
 }

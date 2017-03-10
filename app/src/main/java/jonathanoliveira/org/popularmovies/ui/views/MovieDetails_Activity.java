@@ -1,15 +1,13 @@
 package jonathanoliveira.org.popularmovies.ui.views;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import jonathanoliveira.org.popularmovies.core.beans.Movie;
 import jonathanoliveira.org.popularmovies.R;
-import jonathanoliveira.org.popularmovies.data.api.APIUtils;
+import jonathanoliveira.org.popularmovies.core.beans.Movie;
 import jonathanoliveira.org.popularmovies.ui.presenters.MovieDetails_Presenter;
 import jonathanoliveira.org.popularmovies.ui.presenters.MovieDetails_Presenter_Interface;
 
@@ -52,17 +50,20 @@ public class MovieDetails_Activity extends AppCompatActivity implements MovieDet
         String movieOverview = SYNOPSIS_LABEL_TEXT + movie.getOverview();
         String movieRating = RATING_LABEL_TEXT + movie.getVote_average();
         String movieReleaseDate = RELEASE_DATE_LABEL_TEXT + movie.getRelease_date();
-        bindPoster(APIUtils.build_Picasso_Url(moviePosterPath));
+        presenter.bindViewWithPicasso(moviePosterPath);
         movieNameTextView.setText(movieName);
         movieOverviewTextView.setText(movieOverview);
         movieRatingTextView.setText(movieRating);
         movieRDTextView.setText(movieReleaseDate);
     }
 
+    @Override
+    public Context getContext() {
+        return this;
+    }
 
-    void  bindPoster(String moviePosterPath) {
-        Picasso.with(this)
-                .load(moviePosterPath)
-                .into(movieImageView);
+    @Override
+    public ImageView getImageView() {
+        return movieImageView;
     }
 }

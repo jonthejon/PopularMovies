@@ -1,7 +1,6 @@
 package jonathanoliveira.org.popularmovies.data.manager;
 
 import jonathanoliveira.org.popularmovies.core.Core;
-import jonathanoliveira.org.popularmovies.core.Core_Interface;
 import jonathanoliveira.org.popularmovies.core.beans.Movie;
 import jonathanoliveira.org.popularmovies.core.comm_interfaces.CoreToDataManager_Interface;
 import jonathanoliveira.org.popularmovies.data.api.APIHandler;
@@ -18,7 +17,6 @@ public class Manager implements Manager_Interface, CoreToDataManager_Interface {
     private static final CoreToDataManager_Interface commInstance = new Manager();
     private static final Manager_Interface manager = new Manager();
 
-    private Core_Interface core;
     private APIHandler_Interface apiHandlerInterface;
 
     private final String API_CALLNAME = "api";
@@ -49,6 +47,11 @@ public class Manager implements Manager_Interface, CoreToDataManager_Interface {
             case UTILS_CALLNAME:
                 break;
         }
+    }
+
+    @Override
+    public void bindDataToView(String moviePosterPath) {
+        apiHandlerInterface.bindPicassoToView(Core.getCoreInstance().getPresenterInstance(), moviePosterPath);
     }
 
     @Override

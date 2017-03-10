@@ -2,6 +2,7 @@ package jonathanoliveira.org.popularmovies.core;
 
 import jonathanoliveira.org.popularmovies.core.beans.Movie;
 import jonathanoliveira.org.popularmovies.core.comm_interfaces.CoreToAdapter_Interface;
+import jonathanoliveira.org.popularmovies.core.comm_interfaces.CoreToPresenter_Interface;
 
 /**
  * Created by JonathanOliveira on 07/03/17.
@@ -10,6 +11,8 @@ import jonathanoliveira.org.popularmovies.core.comm_interfaces.CoreToAdapter_Int
 public interface Core_Interface {
 
     void registerCoreToAdapterInterface(CoreToAdapter_Interface coreToAdapterInterface);
+
+    void registerCoreToPresenterInterface(CoreToPresenter_Interface coreToPresenterInterface);
 
     void returnData(Movie[] movieArr);
 
@@ -21,6 +24,10 @@ public interface Core_Interface {
 
     void getData(String callType);
 
+    void bindData(String moviePosterPath);
+
     String getManagerAPICallName();
+
+    CoreToPresenter_Interface getPresenterInstance();
 
 }

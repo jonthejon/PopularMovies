@@ -12,4 +12,6 @@ public interface CoreToDataManager_Interface {
 
     String getManagerUtilsCallName();
 
+    void bindDataToView(String moviePosterPath);
+
 }

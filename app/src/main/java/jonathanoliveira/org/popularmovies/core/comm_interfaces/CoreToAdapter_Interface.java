@@ -1,5 +1,7 @@
 package jonathanoliveira.org.popularmovies.core.comm_interfaces;
 
+import android.content.Context;
+
 import jonathanoliveira.org.popularmovies.core.beans.Movie;
 
 /**
@@ -11,5 +13,7 @@ public interface CoreToAdapter_Interface {
     void updateAdapter(Movie[] movieResult);
 
     void writeError();
+
+    Context getContext();
 
 }
