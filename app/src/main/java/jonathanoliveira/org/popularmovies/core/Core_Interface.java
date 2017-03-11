@@ -30,4 +30,6 @@ public interface Core_Interface {
 
     CoreToPresenter_Interface getPresenterInstance();
 
+    CoreToAdapter_Interface getAdapterPresenterInstance();
+
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -112,4 +113,12 @@ public class MovieGrid_Activity extends AppCompatActivity implements MovieGrid_A
     public View getBaseView() {
         return findViewById(R.id.activity_main);
     }
+
+
+    @Override
+    public LoaderManager getActivityLoaderManager() {
+        return getSupportLoaderManager();
+    }
+
+
 }

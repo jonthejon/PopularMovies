@@ -1,5 +1,6 @@
 package jonathanoliveira.org.popularmovies.ui.views;
 
+import android.support.v4.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -38,4 +39,6 @@ public interface MovieGrid_Activity_Interface {
     void startNewActivityWithIntent(Intent intent);
 
     View getBaseView();
+
+    LoaderManager getActivityLoaderManager();
 }

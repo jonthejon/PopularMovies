@@ -1,6 +1,7 @@
 package jonathanoliveira.org.popularmovies.data.manager;
 
 import jonathanoliveira.org.popularmovies.core.Core;
+import jonathanoliveira.org.popularmovies.core.Core_Interface;
 import jonathanoliveira.org.popularmovies.core.beans.Movie;
 import jonathanoliveira.org.popularmovies.core.comm_interfaces.CoreToDataManager_Interface;
 import jonathanoliveira.org.popularmovies.data.api.APIHandler;
@@ -41,7 +42,9 @@ public class Manager implements Manager_Interface, CoreToDataManager_Interface {
                 if (apiHandlerInterface == null) {
                     apiHandlerInterface = new APIHandler();
                 }
-                apiHandlerInterface.startAsyncTask(Core.getCoreInstance().getBooleanOption());
+//                apiHandlerInterface.startAsyncTask(Core.getCoreInstance().getBooleanOption());
+                Core_Interface core = Core.getCoreInstance();
+                apiHandlerInterface.startAsyncTaskLoader(core.getAdapterPresenterInstance(), core.getBooleanOption());
                 break;
 
             case UTILS_CALLNAME:

@@ -82,4 +82,9 @@ public class Core implements Core_Interface {
     public CoreToPresenter_Interface getPresenterInstance() {
         return coreToPresenterInterface;
     }
+
+    @Override
+    public CoreToAdapter_Interface getAdapterPresenterInstance() {
+        return coreToAdapterInterface;
+    }
 }

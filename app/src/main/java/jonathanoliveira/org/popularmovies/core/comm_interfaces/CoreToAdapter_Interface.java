@@ -1,6 +1,7 @@
 package jonathanoliveira.org.popularmovies.core.comm_interfaces;
 
 import android.content.Context;
+import android.support.v4.app.LoaderManager;
 
 import jonathanoliveira.org.popularmovies.core.beans.Movie;
 
@@ -15,5 +16,7 @@ public interface CoreToAdapter_Interface {
     void writeError();
 
     Context getContext();
+
+    LoaderManager getLoaderManager();
 
 }

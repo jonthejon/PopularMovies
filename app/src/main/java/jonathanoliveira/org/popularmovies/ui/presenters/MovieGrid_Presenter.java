@@ -3,6 +3,7 @@ package jonathanoliveira.org.popularmovies.ui.presenters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
 import android.view.MenuItem;
 
 import jonathanoliveira.org.popularmovies.R;
@@ -73,6 +74,11 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
         core.registerCoreToAdapterInterface(this);
         core.setBooleanOption(activity.getObjectStateBoolean());
         core.getData(core.getManagerAPICallName());
+    }
+
+    @Override
+    public LoaderManager getLoaderManager() {
+        return activity.getActivityLoaderManager();
     }
 
     @Override
