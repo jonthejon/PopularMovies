@@ -17,7 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.views.MovieDetails_Activity"></activity>
+        <activity
+            android:name=".ui.views.MovieDetails_Activity"
+            android:parentActivityName=".ui.views.MovieGrid_Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.views.MovieGrid_Activity" />
+        </activity>
     </application>
 
 </manifest>

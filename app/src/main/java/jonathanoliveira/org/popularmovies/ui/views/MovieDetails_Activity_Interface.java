@@ -17,4 +17,6 @@ public interface MovieDetails_Activity_Interface {
 
     ImageView getImageView();
 
+    void setActionBar();
+
 }

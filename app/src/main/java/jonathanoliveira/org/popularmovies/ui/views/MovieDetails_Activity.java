@@ -2,7 +2,10 @@ package jonathanoliveira.org.popularmovies.ui.views;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,9 +28,18 @@ public class MovieDetails_Activity extends AppCompatActivity implements MovieDet
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
+        setActionBar();
         wireViews();
         presenter = new MovieDetails_Presenter(this);
         presenter.operateOnCallerIntent(getIntent());
+    }
+
+    @Override
+    public void setActionBar() {
+        ActionBar actionBar = this.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
@@ -65,5 +77,14 @@ public class MovieDetails_Activity extends AppCompatActivity implements MovieDet
     @Override
     public ImageView getImageView() {
         return movieImageView;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
