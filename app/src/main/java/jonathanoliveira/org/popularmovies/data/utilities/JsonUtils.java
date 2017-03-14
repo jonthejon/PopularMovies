@@ -32,13 +32,14 @@ public final class JsonUtils {
      *
      * @throws JSONException If JSON data cannot be properly parsed
      */
-    public static Movie[] getSimpleWeatherStringsFromJson(String forecastJsonStr)
+    public static Movie[] getObjectsFromJson(String forecastJsonStr)
             throws JSONException {
 
         final String RES_LIST = "results";
 
+//        Log.d(TAG, "getObjectsFromJson: init");
 
-        final String FAIL_MESSAGE_CODE = "cod";
+//        final String FAIL_MESSAGE_CODE = "cod";
         Movie[] movies;
 
         JSONObject forecastJson = new JSONObject(forecastJsonStr);
@@ -46,6 +47,7 @@ public final class JsonUtils {
         JSONArray moviesArray = forecastJson.getJSONArray(RES_LIST);
 
         movies = new Movie[moviesArray.length()];
+//        Log.d(TAG, "getObjectsFromJson: " + movies.length);
 
         for (int i = 0; i < moviesArray.length(); i++) {
 
@@ -61,10 +63,11 @@ public final class JsonUtils {
 
             poster_path = movieJsonObject.getString("poster_path");
             overview = movieJsonObject.getString("overview");
-            release_date = movieJsonObject.getString("release_date");
+            release_date = movieJsonObject.getString("release_date").substring(0,4);
             title = movieJsonObject.getString("title");
             vote_average = movieJsonObject.getDouble("vote_average");
-
+//            movie_id = movieJsonObject.getInt("id");
+//            Log.d(TAG, "getObjectsFromJson: " + movie_id);
             movies[i] = new Movie(poster_path,title,overview,release_date,vote_average);
         }
 

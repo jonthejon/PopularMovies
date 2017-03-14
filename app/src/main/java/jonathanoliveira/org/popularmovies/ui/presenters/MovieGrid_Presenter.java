@@ -29,17 +29,24 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
     public boolean handleMenuItemClick(MenuItem item) {
         int itemId = item.getItemId();
         switch (itemId) {
-            case R.id.settings_button:
+            case R.id.most_popular_menu_item:
                 if (activity.getObjectStateBoolean()) {
-                    item.setTitle(R.string.popular);
-                    activity.setObjectStateBoolean(false);
+                    return true;
                 } else {
-                    item.setTitle(R.string.rated);
                     activity.setObjectStateBoolean(true);
                 }
-                askCoreForData();
+                break;
+            case R.id.top_rated_menu_item:
+                if (!activity.getObjectStateBoolean()) {
+                    activity.setObjectStateBoolean(false);
+                } else {
+                    activity.setObjectStateBoolean(false);
+                }
+                break;
+            case R.id.favorites_menu_item:
                 return true;
         }
+        askCoreForData();
         return true;
     }
 

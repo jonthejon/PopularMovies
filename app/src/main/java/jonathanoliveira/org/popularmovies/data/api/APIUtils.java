@@ -40,7 +40,10 @@ public final class APIUtils {
     private final static String PAGES_NUM = "page";
     private final static String LANGUAGE = "language";
     // The image type of poster for picasso url
-    private final static String DOWNLOAD_IMAGE_TYPE = "w185";
+//    private final static String DOWNLOAD_IMAGE_TYPE = "w185";
+    private final static String DOWNLOAD_IMAGE_TYPE = "w342";
+//    private final static String DOWNLOAD_IMAGE_TYPE = "w500";
+//    private final static String DOWNLOAD_IMAGE_TYPE = "w780";
 
     public static URL build_MD_API_Url(boolean sortByPopularity) {
         Uri uriQuery = Uri.parse(sortByPopularity ? MOVIEDB_PICASSO_POPULAR_URL: MOVIEDB_PICASSO_RATED_URL).buildUpon()

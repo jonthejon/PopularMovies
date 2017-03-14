@@ -16,7 +16,7 @@ public class UtilitiesHandler implements UtilitiesHandler_Interface {
         Movie[] movieResult;
 
         try {
-            movieResult = JsonUtils.getSimpleWeatherStringsFromJson(rawJSONResult);
+            movieResult = JsonUtils.getObjectsFromJson(rawJSONResult);
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
