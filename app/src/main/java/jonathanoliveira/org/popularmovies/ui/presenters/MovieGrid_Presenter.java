@@ -55,9 +55,9 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
         activity.getRecyclerViewAdapter().notifyAdapterForDataChange(movieArr);
     }
 
-    @Override
+        @Override
     public void onAdapterClickCallback(int position) {
-        Intent intent = createIntent(activity.getContext(), activity.getRecyclerViewAdapter().getAdapterDataSingleItem(position));
+        Intent intent = createIntent(activity.getContext(),activity.getRecyclerViewAdapter().getAdapterDataSingleItem(position));
         activity.startNewActivityWithIntent(intent);
     }
 
@@ -79,8 +79,9 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
     public void askCoreForData() {
         Core_Interface core = Core.getCoreInstance();
         core.registerCoreToAdapterInterface(this);
-        core.setBooleanOption(activity.getObjectStateBoolean());
-        core.getData(core.getManagerAPICallName());
+//        core.setBooleanOption(activity.getObjectStateBoolean());
+//        core.getData(core.getManagerAPICallName());
+        core.getData(core.getAdapterChannel());
     }
 
     @Override
@@ -91,5 +92,10 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
     @Override
     public Context getContext() {
         return activity.getContext();
+    }
+
+    @Override
+    public boolean getBooleanOption() {
+        return activity.getObjectStateBoolean();
     }
 }

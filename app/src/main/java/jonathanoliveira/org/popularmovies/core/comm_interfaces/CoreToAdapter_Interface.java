@@ -19,4 +19,6 @@ public interface CoreToAdapter_Interface {
 
     LoaderManager getLoaderManager();
 
+    boolean getBooleanOption();
+
 }

@@ -1,6 +1,7 @@
 package jonathanoliveira.org.popularmovies.ui.presenters;
 
 import android.content.Intent;
+import android.view.View;
 
 import jonathanoliveira.org.popularmovies.core.beans.Movie;
 
@@ -15,5 +16,9 @@ public interface MovieDetails_Presenter_Interface {
     Movie getObjectFromPresenter();
 
     void bindViewWithPicasso(String moviePosterPath);
+
+    int getDisplayWidth();
+
+    void handleTrailerClick(View view);
 
 }

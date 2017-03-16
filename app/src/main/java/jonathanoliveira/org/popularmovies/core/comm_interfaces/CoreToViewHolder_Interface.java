@@ -13,4 +13,6 @@ public interface CoreToViewHolder_Interface {
 
     ImageView getImageView();
 
+    String getString();
+
 }

@@ -8,6 +8,10 @@ import jonathanoliveira.org.popularmovies.core.beans.Movie;
 
 public interface UtilitiesHandler_Interface {
 
-    Movie[] convertJSONtoData(String rawJSONResult);
+    Movie[] convertJSONtoMoviesArr(String rawJSONResult);
+
+    String[][] convertJSONtoTrailerArr(String rawJSONResult);
+
+    String[][] convertJSONtoReviewArr(String rawJSONResult);
 
 }

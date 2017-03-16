@@ -24,16 +24,24 @@ public class MovieGrid_Activity extends AppCompatActivity implements MovieGrid_A
     private GridAdapter mGridAdapter;
     private boolean sortByPopularity = true;
     private MovieGrid_Presenter_Interface presenter;
+    private final String OPTION_VALUE = "search_option";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState != null) {
+            if (savedInstanceState.containsKey(OPTION_VALUE)) {
+                boolean savedOption = savedInstanceState.getBoolean(OPTION_VALUE);
+                setObjectStateBoolean(savedOption);
+            }
+        }
         presenter = new MovieGrid_Presenter(this);
-        presenter.askCoreForData();
+//        presenter.askCoreForData();
         wireViews();
         setLayoutManager();
         bindAdapter(setAdapter());
+        presenter.askCoreForData();
     }
 
     @Override
@@ -120,5 +128,9 @@ public class MovieGrid_Activity extends AppCompatActivity implements MovieGrid_A
         return getSupportLoaderManager();
     }
 
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(OPTION_VALUE, getObjectStateBoolean());
+    }
 }

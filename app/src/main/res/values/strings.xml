@@ -11,6 +11,8 @@
     <string name="fav_button_off">+ Favorite</string>
     <string name="fav_button_on">- Favorite</string>
     <string name="ratings_cont">/10</string>
+    <string name="basic_review_text">review</string>
+    <string name="basic_trailer_text">trailer</string>
     <string name="snackbar_text">Sorry. No internet connection.</string>
     <!--<string name="movie_name_dummy">The Arrival</string>-->
 
@@ -22,11 +24,13 @@
 
     <string name="dummy_mt">Finding Nemo</string>
     <string name="dummy_movie_year">2016</string>
-    <string name="dummy_movie_length">120 min</string>
+    <string name="dummy_trailers_number">0 trailers</string>
+    <string name="dummy_reviews_number">0 reviews</string>
     <string name="dummy_movie_rating">8.1/10</string>
     <string name="dummy_fav_button_off">+ Favorite</string>
     <string name="dummy_trailer_title">Trailers: </string>
     <string name="dummy_trailer_name">Trailer 1</string>
     <string name="dummy_image_desc">Image description</string>
     <string name="dummy_overview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo sapien eu ante placerat, nec dignissim lacus consectetur. Nullam porttitor dolor dui, a vulputate sem bibendum sollicitudin. Fusce id hendrerit mi. Aliquam iaculis diam nec pretium tempor.</string>
+
 </resources>

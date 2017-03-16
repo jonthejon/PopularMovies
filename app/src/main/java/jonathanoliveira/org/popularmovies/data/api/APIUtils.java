@@ -15,11 +15,19 @@ public final class APIUtils {
     private static final String MOVIEDB_PICASSO_BASE_URL =
             "http://image.tmdb.org/t/p/";
 
-    private static final String MOVIEDB_PICASSO_POPULAR_URL =
-            "https://api.themoviedb.org/3/movie/popular";
-    private static final String MOVIEDB_PICASSO_RATED_URL =
-            "https://api.themoviedb.org/3/movie/top_rated";
+    private static final String MOVIEDB_BASIC_URL = "https://api.themoviedb.org/3/movie/";
 
+    private static final String YOUTUBE_BASIC_URL = "https://www.youtube.com/watch";
+
+//    private static final String MOVIEDB_PICASSO_POPULAR_URL =
+//            "https://api.themoviedb.org/3/movie/popular";
+    private static final String MOVIEDB_PICASSO_POPULAR_URL = MOVIEDB_BASIC_URL + "popular";
+//    private static final String MOVIEDB_PICASSO_RATED_URL =
+//            "https://api.themoviedb.org/3/movie/top_rated";
+    private static final String MOVIEDB_PICASSO_RATED_URL = MOVIEDB_BASIC_URL + "top_rated";
+
+    private static final String TRAILER_APPENDIX = "/videos";
+    private static final String REVIEWS_APPENDIX = "/reviews";
 
 
 /*
@@ -45,7 +53,9 @@ public final class APIUtils {
 //    private final static String DOWNLOAD_IMAGE_TYPE = "w500";
 //    private final static String DOWNLOAD_IMAGE_TYPE = "w780";
 
-    public static URL build_MD_API_Url(boolean sortByPopularity) {
+    private final static String YOUTUBE_PARAM = "v";
+
+    public static URL build_Movies_Array_Url(boolean sortByPopularity) {
         Uri uriQuery = Uri.parse(sortByPopularity ? MOVIEDB_PICASSO_POPULAR_URL: MOVIEDB_PICASSO_RATED_URL).buildUpon()
                 .appendQueryParameter(API_KEY,JONATHAN_MOVIEDB_API_KEY)
                 .appendQueryParameter(LANGUAGE,language)
@@ -66,5 +76,42 @@ public final class APIUtils {
         url += DOWNLOAD_IMAGE_TYPE;
         url += poster_path;
         return url;
+    }
+
+    public static URL build_Trailers_Url(int movie_id) {
+        String basicTrailerString = MOVIEDB_BASIC_URL + movie_id + TRAILER_APPENDIX;
+        Uri uriQuery = Uri.parse(basicTrailerString).buildUpon()
+                .appendQueryParameter(API_KEY,JONATHAN_MOVIEDB_API_KEY)
+                .build();
+        URL url = null;
+        try {
+            url = new URL(uriQuery.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return url;
+    }
+
+    public static URL build_Reviews_Url(int movie_id) {
+        String basicTrailerString = MOVIEDB_BASIC_URL + movie_id + REVIEWS_APPENDIX;
+        Uri uriQuery = Uri.parse(basicTrailerString).buildUpon()
+                .appendQueryParameter(API_KEY,JONATHAN_MOVIEDB_API_KEY)
+                .build();
+        URL url = null;
+        try {
+            url = new URL(uriQuery.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return url;
+    }
+
+    public static String build_Youtube_Url(String youtubeKey) {
+        Uri uriQuery = Uri.parse(YOUTUBE_BASIC_URL).buildUpon()
+                .appendQueryParameter(YOUTUBE_PARAM,youtubeKey)
+                .build();
+        return uriQuery.toString();
     }
 }

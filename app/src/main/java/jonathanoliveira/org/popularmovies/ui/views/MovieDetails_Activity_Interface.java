@@ -1,6 +1,10 @@
 package jonathanoliveira.org.popularmovies.ui.views;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.LoaderManager;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 /**
@@ -12,11 +16,20 @@ public interface MovieDetails_Activity_Interface {
     void wireViews();
 
     void bindDataToViews();
+    void bindTrailersToViews();
 
     Context getContext();
 
     ImageView getImageView();
 
     void setActionBar();
+
+    LoaderManager getActivityLoaderManager();
+
+    WindowManager getActivityWindowManager();
+
+    PackageManager getActivityPackageManager();
+
+    void startNewActivityWithIntent(Intent intent);
 
 }

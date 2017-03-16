@@ -2,7 +2,6 @@ package jonathanoliveira.org.popularmovies.ui.helpers;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,6 @@ public class GridAdapter extends RecyclerView.Adapter<PosterViewHolder> implemen
     public void onBindViewHolder(PosterViewHolder holder, int position) {
         String movieName = moviesArr[position].getMovie_title();
         holder.bindData(movieName, moviesArr[position].getPoster_path());
-        Log.d("LOGGER", "onBindViewHolder: " + moviesArr[position].getPoster_path());
     }
 
     @Override

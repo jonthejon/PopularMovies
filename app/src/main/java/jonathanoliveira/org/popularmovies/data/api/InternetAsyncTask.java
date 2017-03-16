@@ -37,10 +37,10 @@ public class InternetAsyncTask extends AsyncTask<URL, Void, String> {
 
     @Override
     protected void onPostExecute(String rawJSONResult) {
-        if (rawJSONResult != null) {
+/*        if (rawJSONResult != null) {
             apiHandler.serveAPIResult(rawJSONResult);
         } else {
             apiHandler.serveAPIError();
-        }
+        }*/
     }
 }

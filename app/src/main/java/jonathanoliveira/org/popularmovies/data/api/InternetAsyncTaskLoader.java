@@ -15,11 +15,13 @@ public class InternetAsyncTaskLoader extends AsyncTaskLoader<String> {
     String rawJSONResult;
     private APIHandler_Interface apiHandler;
     Bundle args;
+    private int loader_id;
 
-    public InternetAsyncTaskLoader(Context context, APIHandler_Interface apiHandler, Bundle args) {
+    public InternetAsyncTaskLoader(Context context, APIHandler_Interface apiHandler, Bundle args, int loader_id) {
         super(context);
         this.apiHandler = apiHandler;
         this.args = args;
+        this.loader_id = loader_id;
     }
 
 
@@ -33,14 +35,42 @@ public class InternetAsyncTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        boolean searchOption = args.getBoolean(apiHandler.getConstant());
-        try {
-            rawJSONResult = InternetConnection.getResponseFromHttpUrl(APIUtils.build_MD_API_Url(searchOption));
+        switch (this.loader_id) {
+            case 22:
+                boolean searchOption = args.getBoolean(apiHandler.getBoolConstant());
+                try {
+                    rawJSONResult = InternetConnection.getResponseFromHttpUrl(APIUtils.build_Movies_Array_Url(searchOption));
+                } catch (IOException ioe) {
+                    apiHandler.serveAPIError();
+                }
+                break;
 
-        } catch (IOException ioe) {
-            apiHandler.serveAPIError();
-//            ioe.printStackTrace();
+            case 23:
+                try {
+                    int movie_id = args.getInt(apiHandler.getMovieIDConstant());
+                    rawJSONResult = InternetConnection.getResponseFromHttpUrl(APIUtils.build_Trailers_Url(movie_id));
+                } catch (IOException ioe) {
+                    apiHandler.serveAPIError();
+                }
+                break;
+
+            case 24:
+                try {
+                    int movie_id = args.getInt(apiHandler.getMovieIDConstant());
+                    rawJSONResult = InternetConnection.getResponseFromHttpUrl(APIUtils.build_Reviews_Url(movie_id));
+                } catch (IOException ioe) {
+                    apiHandler.serveAPIError();
+                }
+                break;
         }
+//        boolean searchOption = args.getBoolean(apiHandler.getConstant());
+//        try {
+//            rawJSONResult = InternetConnection.getResponseFromHttpUrl(APIUtils.build_Movies_Array_Url(searchOption));
+//
+//        } catch (IOException ioe) {
+//            apiHandler.serveAPIError();
+////            ioe.printStackTrace();
+//        }
         return rawJSONResult;
     }
 
