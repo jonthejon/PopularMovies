@@ -24,12 +24,16 @@ public class GridAdapter extends RecyclerView.Adapter<PosterViewHolder> implemen
     public GridAdapter(MovieGrid_Presenter_Interface presenter) {
         this.presenter = presenter;
     }
+    public GridAdapter(MovieGrid_Presenter_Interface presenter, Movie[] movies) {
+        this.presenter = presenter;
+    }
 
     @Override
     public void notifyAdapterForDataChange(Movie[] moviesArr) {
         this.moviesArr = null;
         this.moviesArr = moviesArr;
         notifyDataSetChanged();
+        presenter.updateRecyclerViewState();
     }
 
     @Override
@@ -70,4 +74,8 @@ public class GridAdapter extends RecyclerView.Adapter<PosterViewHolder> implemen
         return presenter.getContext();
     }
 
+    @Override
+    public Movie[] getMoviesArr() {
+        return this.moviesArr;
+    }
 }

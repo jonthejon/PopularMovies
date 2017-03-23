@@ -11,6 +11,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/movie_details_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
     <TextView
         android:id="@+id/new_movie_title"
         android:layout_width="@dimen/aligner_0dp"
@@ -102,11 +108,188 @@
         app:layout_constraintLeft_toRightOf="@+id/new_movie_poster"
         app:layout_constraintBottom_toBottomOf="@+id/new_movie_poster" />
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/trailer_1_frame"
+            android:layout_width="@dimen/constraint_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/aligner_0dp"
+            android:layout_marginStart="@dimen/constraint_trailer_1_margin_start_sw600dp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toRightOf="@+id/new_movie_fav_btn"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_movie_title">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/trailer_title_margin_start_sw600dp"
+                android:layout_marginTop="@dimen/trailer_title_margin_top"
+                android:fontFamily="monospace"
+                android:text="@string/dummy_trailer_title"
+                android:textSize="@dimen/trailer_title_text_size_sw600dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/new_play_btn_1"
+                style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/trailer_button_margin_start_sw600dp"
+                android:layout_marginTop="@dimen/trailer_button_margin_top"
+                android:onClick="onClickTrailerButton"
+                android:contentDescription="@string/dummy_image_desc"
+                app:layout_constraintLeft_toLeftOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:srcCompat="@android:drawable/ic_media_play" />
+
+            <TextView
+                android:id="@+id/new_trailer_name_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/trailer_name_margin_bottom"
+                android:layout_marginStart="@dimen/trailer_name_margin_start"
+                android:layout_marginTop="@dimen/trailer_name_margin_top"
+                android:fontFamily="monospace"
+                android:textSize="@dimen/trailer_name_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/new_play_btn_1"
+                app:layout_constraintLeft_toRightOf="@+id/new_play_btn_1"
+                app:layout_constraintTop_toTopOf="@+id/new_play_btn_1"
+                tools:text="@string/dummy_trailer_name" />
+
+            <ImageView
+                android:id="@+id/new_trailer_div_1"
+                android:layout_width="@dimen/aligner_0dp"
+                android:layout_height="@dimen/divisor_heigth"
+                android:layout_marginEnd="@dimen/divisor_margin_end"
+                android:layout_marginStart="@dimen/divisor_margin_start"
+                android:layout_marginTop="@dimen/divisor_margin_top_other_divisors"
+                android:visibility="gone"
+                android:contentDescription="@string/dummy_image_desc"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_play_btn_1"
+                app:srcCompat="@android:color/darker_gray" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/trailer_2_frame"
+            android:layout_width="@dimen/constraint_width"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/aligner_0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/trailer_1_frame"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trailer_1_frame">
+
+            <ImageButton
+                android:id="@+id/new_play_btn_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_media_play"
+                android:layout_marginTop="@dimen/trailer_button_margin_top_2"
+                android:layout_marginStart="@dimen/trailer_button_margin_start_2"
+                android:onClick="onClickTrailerButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:contentDescription="@string/dummy_image_desc"/>
+
+            <TextView
+                android:id="@+id/new_trailer_name_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/trailer_name_margin_bottom"
+                android:layout_marginStart="@dimen/trailer_name_margin_start"
+                android:layout_marginTop="@dimen/trailer_name_margin_top"
+                android:fontFamily="monospace"
+                android:textSize="@dimen/trailer_name_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/new_play_btn_2"
+                app:layout_constraintLeft_toRightOf="@+id/new_play_btn_2"
+                app:layout_constraintTop_toTopOf="@+id/new_play_btn_2"
+                tools:text="@string/dummy_trailer_name" />
+
+            <ImageView
+                android:id="@+id/new_trailer_div_2"
+                android:layout_width="@dimen/aligner_0dp"
+                android:layout_height="@dimen/divisor_heigth"
+                android:layout_marginEnd="@dimen/divisor_margin_end"
+                android:layout_marginStart="@dimen/divisor_margin_start"
+                android:layout_marginTop="@dimen/divisor_margin_top_other_divisors"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_play_btn_2"
+                app:srcCompat="@android:color/darker_gray"
+                android:contentDescription="@string/dummy_image_desc"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/trailer_3_frame"
+            android:layout_width="@dimen/constraint_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/aligner_0dp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="@+id/trailer_1_frame"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trailer_2_frame">
+
+
+            <ImageButton
+                android:id="@+id/new_play_btn_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_media_play"
+                android:layout_marginTop="@dimen/trailer_button_margin_top_2"
+                android:layout_marginStart="@dimen/trailer_button_margin_start_2"
+                android:onClick="onClickTrailerButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:contentDescription="@string/dummy_image_desc"/>
+
+            <TextView
+                android:id="@+id/new_trailer_name_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/trailer_name_margin_bottom"
+                android:layout_marginStart="@dimen/trailer_name_margin_start"
+                android:layout_marginTop="@dimen/trailer_name_margin_top"
+                android:fontFamily="monospace"
+                android:textSize="@dimen/trailer_name_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/new_play_btn_3"
+                app:layout_constraintLeft_toRightOf="@+id/new_play_btn_3"
+                app:layout_constraintTop_toTopOf="@+id/new_play_btn_3"
+                app:layout_constraintVertical_bias="0.47"
+                tools:text="@string/dummy_trailer_name" />
+
+            <ImageView
+                android:id="@+id/new_trailer_div_3"
+                android:layout_width="@dimen/aligner_0dp"
+                android:layout_height="@dimen/divisor_heigth"
+                android:layout_marginEnd="@dimen/divisor_margin_end"
+                android:layout_marginStart="@dimen/divisor_margin_start"
+                android:layout_marginTop="@dimen/divisor_margin_top_other_divisors"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_play_btn_3"
+                app:srcCompat="@android:color/darker_gray"
+                android:contentDescription="@string/dummy_image_desc"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
     <TextView
         android:id="@+id/new_movie_overview"
         android:layout_width="@dimen/aligner_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/overview_margin_top_basic"
+        android:layout_marginTop="@dimen/overview_margin_top_sw600dp"
         android:fontFamily="monospace"
         android:scrollHorizontally="false"
         android:textColor="@android:color/black"
@@ -114,10 +297,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_movie_poster"
+        app:layout_constraintTop_toBottomOf="@+id/movie_details_constraint"
         tools:text="@string/dummy_overview"
-        android:layout_marginStart="@dimen/overview_margin_start_basic"
-        android:layout_marginEnd="@dimen/overview_margin_end" />
+        android:layout_marginStart="@dimen/overview_margin_start_sw600dp"
+        android:layout_marginEnd="@dimen/overview_margin_end"/>
 
     <ImageView
         android:id="@+id/firstMovieDivisor"
@@ -133,178 +316,6 @@
         android:layout_marginEnd="@dimen/divisor_margin_end"
         android:contentDescription="@string/dummy_image_desc" />
 
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/trailer_1_frame"
-        android:layout_width="@dimen/constraint_width"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/aligner_0dp"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstMovieDivisor">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/trailer_title_margin_start"
-            android:layout_marginTop="@dimen/trailer_title_margin_top"
-            android:fontFamily="monospace"
-            android:text="@string/dummy_trailer_title"
-            android:textSize="@dimen/trailer_title_text_size"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/new_play_btn_1"
-            style="@android:style/Widget.DeviceDefault.Light.ImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/trailer_button_margin_start"
-            android:layout_marginTop="@dimen/trailer_button_margin_top"
-            android:onClick="onClickTrailerButton"
-            android:contentDescription="@string/dummy_image_desc"
-            app:layout_constraintLeft_toLeftOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:srcCompat="@android:drawable/ic_media_play" />
-
-        <TextView
-            android:id="@+id/new_trailer_name_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/trailer_name_margin_bottom"
-            android:layout_marginStart="@dimen/trailer_name_margin_start"
-            android:layout_marginTop="@dimen/trailer_name_margin_top"
-            android:fontFamily="monospace"
-            android:textSize="@dimen/trailer_name_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/new_play_btn_1"
-            app:layout_constraintLeft_toRightOf="@+id/new_play_btn_1"
-            app:layout_constraintTop_toTopOf="@+id/new_play_btn_1"
-            tools:text="@string/dummy_trailer_name" />
-
-        <ImageView
-            android:id="@+id/new_trailer_div_1"
-            android:layout_width="@dimen/aligner_0dp"
-            android:layout_height="@dimen/divisor_heigth"
-            android:layout_marginEnd="@dimen/divisor_margin_end"
-            android:layout_marginStart="@dimen/divisor_margin_start"
-            android:layout_marginTop="@dimen/divisor_margin_top_other_divisors"
-            android:contentDescription="@string/dummy_image_desc"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/new_play_btn_1"
-            app:srcCompat="@android:color/darker_gray" />
-
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/trailer_2_frame"
-        android:layout_width="@dimen/constraint_width"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginEnd="@dimen/aligner_0dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/trailer_1_frame">
-
-    <ImageButton
-        android:id="@+id/new_play_btn_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_media_play"
-        android:layout_marginTop="@dimen/trailer_button_margin_top_2"
-        android:layout_marginStart="@dimen/trailer_button_margin_start_2"
-        android:onClick="onClickTrailerButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:contentDescription="@string/dummy_image_desc"/>
-
-    <TextView
-        android:id="@+id/new_trailer_name_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/trailer_name_margin_bottom"
-        android:layout_marginStart="@dimen/trailer_name_margin_start"
-        android:layout_marginTop="@dimen/trailer_name_margin_top"
-        android:fontFamily="monospace"
-        android:textSize="@dimen/trailer_name_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/new_play_btn_2"
-        app:layout_constraintLeft_toRightOf="@+id/new_play_btn_2"
-        app:layout_constraintTop_toTopOf="@+id/new_play_btn_2"
-        tools:text="@string/dummy_trailer_name" />
-
-    <ImageView
-        android:id="@+id/new_trailer_div_2"
-        android:layout_width="@dimen/aligner_0dp"
-        android:layout_height="@dimen/divisor_heigth"
-        android:layout_marginEnd="@dimen/divisor_margin_end"
-        android:layout_marginStart="@dimen/divisor_margin_start"
-        android:layout_marginTop="@dimen/divisor_margin_top_other_divisors"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_play_btn_2"
-        app:srcCompat="@android:color/darker_gray"
-        android:contentDescription="@string/dummy_image_desc"/>
-
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/trailer_3_frame"
-        android:layout_width="@dimen/constraint_width"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/aligner_0dp"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/trailer_2_frame">
-
-
-    <ImageButton
-        android:id="@+id/new_play_btn_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_media_play"
-        android:layout_marginTop="@dimen/trailer_button_margin_top_2"
-        android:layout_marginStart="@dimen/trailer_button_margin_start_2"
-        android:onClick="onClickTrailerButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:contentDescription="@string/dummy_image_desc"/>
-
-    <TextView
-        android:id="@+id/new_trailer_name_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/trailer_name_margin_bottom"
-        android:layout_marginStart="@dimen/trailer_name_margin_start"
-        android:layout_marginTop="@dimen/trailer_name_margin_top"
-        android:fontFamily="monospace"
-        android:textSize="@dimen/trailer_name_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/new_play_btn_3"
-        app:layout_constraintLeft_toRightOf="@+id/new_play_btn_3"
-        app:layout_constraintTop_toTopOf="@+id/new_play_btn_3"
-        app:layout_constraintVertical_bias="0.47"
-        tools:text="@string/dummy_trailer_name" />
-
-    <ImageView
-        android:id="@+id/new_trailer_div_3"
-        android:layout_width="@dimen/aligner_0dp"
-        android:layout_height="@dimen/divisor_heigth"
-        android:layout_marginEnd="@dimen/divisor_margin_end"
-        android:layout_marginStart="@dimen/divisor_margin_start"
-        android:layout_marginTop="@dimen/divisor_margin_top_other_divisors"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_play_btn_3"
-        app:srcCompat="@android:color/darker_gray"
-        android:contentDescription="@string/dummy_image_desc"/>
-
-</android.support.constraint.ConstraintLayout>
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/review_1_frame"
         android:layout_width="@dimen/constraint_width"
@@ -313,7 +324,7 @@
         android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trailer_3_frame">
+        app:layout_constraintTop_toBottomOf="@+id/firstMovieDivisor">
 
     <TextView
         android:id="@+id/new_reviews_title"
@@ -347,6 +358,7 @@
         android:id="@+id/new_review_text_1"
         android:layout_width="@dimen/aligner_0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/review_margin_top"
         android:fontFamily="monospace"
         android:scrollHorizontally="false"
         android:textColor="@android:color/black"
@@ -356,7 +368,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_review_author_1"
         tools:text="@string/dummy_overview"
-        android:layout_marginTop="@dimen/review_margin_top"
         android:layout_marginStart="@dimen/review_margin_start"
         android:layout_marginEnd="@dimen/review_margin_end" />
 
@@ -430,7 +441,6 @@
             app:srcCompat="@android:color/darker_gray"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/new_review_text_2"
-
             android:contentDescription="@string/dummy_image_desc" />
 
     </android.support.constraint.ConstraintLayout>

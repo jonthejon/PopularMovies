@@ -1,5 +1,6 @@
 package jonathanoliveira.org.popularmovies.ui.views;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -122,10 +123,43 @@ public class MovieDetails_Activity extends AppCompatActivity implements MovieDet
             TextView trailerName = (TextView) findViewById(viewIds[i]);
             trailerName.setWidth(trailerNameWidth.intValue());
             trailerName.setSingleLine(true);
-//            trailerName.setMaxLines(1);
             trailerName.setText(allTrailers[i][0]);
-//            trailerName.setEllipsize(trailerName.getEllipsize());
             trailerName.setEllipsize(TextUtils.TruncateAt.END);
+        }
+    }
+
+    @Override
+    public void bindReviewsToViews() {
+        Movie movie = presenter.getObjectFromPresenter();
+        String[][] allReviews = movie.getReviews();
+        int numReviews = allReviews.length;
+        movieReviewNumberTextView.setText(numReviews + " " + getString(R.string.basic_review_text) + "s");
+        int[] authorIds = new int[numReviews];
+        int[] reviewIds = new int[numReviews];
+        if (numReviews >= 1) {
+            findViewById(R.id.review_1_frame).setVisibility(View.VISIBLE);
+            authorIds[0] = R.id.new_review_author_1;
+            reviewIds[0] = R.id.new_review_text_1;
+        }
+        if (numReviews >= 2) {
+            findViewById(R.id.review_2_frame).setVisibility(View.VISIBLE);
+            authorIds[1] = R.id.new_review_author_2;
+            reviewIds[1] = R.id.new_review_text_2;
+        }
+        if (numReviews >= 3) {
+            findViewById(R.id.review_3_frame).setVisibility(View.VISIBLE);
+            authorIds[2] = R.id.new_review_author_3;
+            reviewIds[2] = R.id.new_review_text_3;
+        }
+
+        for (int i=0; i < numReviews; i++) {
+            TextView authorName = (TextView) findViewById(authorIds[i]);
+            authorName.setSingleLine(true);
+            authorName.setText(getString(R.string.new_review_author_name) + " " + allReviews[i][0]);
+            authorName.setEllipsize(TextUtils.TruncateAt.END);
+
+            TextView reviewText = (TextView) findViewById(reviewIds[i]);
+            reviewText.setText(allReviews[i][1]);
         }
     }
 
@@ -172,7 +206,20 @@ public class MovieDetails_Activity extends AppCompatActivity implements MovieDet
 
     public void onClickTrailerButton(View view) {
         presenter.handleTrailerClick(view);
+    }
 
-//        Log.d("JONATHAN", "bindTrailerstoViews: " + id);
+    public void favoriteClickListener(View view) {
+        presenter.favoriteClickListener();
+    }
+
+    @Override
+    public ContentResolver getActivityContentResolver() {
+        return getContentResolver();
+    }
+
+    @Override
+    public void setFavoriteToggleButton() {
+        boolean isFavorite = presenter.getObjectFromPresenter().isFavorite();
+        movieFavButton.setChecked(isFavorite);
     }
 }

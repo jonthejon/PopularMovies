@@ -1,5 +1,6 @@
 package jonathanoliveira.org.popularmovies.ui.views;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,10 +18,13 @@ public interface MovieDetails_Activity_Interface {
 
     void bindDataToViews();
     void bindTrailersToViews();
+    void bindReviewsToViews();
 
     Context getContext();
 
     ImageView getImageView();
+
+    void setFavoriteToggleButton();
 
     void setActionBar();
 
@@ -31,5 +35,7 @@ public interface MovieDetails_Activity_Interface {
     PackageManager getActivityPackageManager();
 
     void startNewActivityWithIntent(Intent intent);
+
+    ContentResolver getActivityContentResolver();
 
 }

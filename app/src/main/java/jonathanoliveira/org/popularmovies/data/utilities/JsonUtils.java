@@ -156,9 +156,14 @@ public final class JsonUtils {
 
         JSONArray reviewsArray = resultJson.getJSONArray(RES_LIST);
 
-        movie_reviews = new String[reviewsArray.length()][2];
+//        movie_reviews = new String[reviewsArray.length()][2];
+        movie_reviews = reviewsArray.length() <= 3 ? new String[reviewsArray.length()][2] : new String[3][2];
 
         for (int i = 0; i < reviewsArray.length(); i++) {
+
+            if (i >= 3) {
+                return movie_reviews;
+            }
 
             String[] validReview = new String[2];
             String author;

@@ -19,6 +19,7 @@ public interface Core_Interface {
 
     void returnData(Movie[] movieArr, int channel);
     void returnData(String rawJSONResult, int channel);
+    void returnData(Movie[] movieArr);
 
     void returnDataError();
 
@@ -28,6 +29,10 @@ public interface Core_Interface {
     int getAdapterChannel();
     int getViewHolderChannel();
     int getPresenterChannel();
+    int getCpInsertChannel();
+    int getCpDeleteChannel();
+    int getCpSingleChannel();
+    int getCpAdapterChannel();
     int getPresenterTrailersChannel();
     int getPresenterReviewsChannel();
 
@@ -36,6 +41,7 @@ public interface Core_Interface {
 
     void bindData(String moviePosterPath);
     void bindData(int channel);
+    void storeData(int channel);
 
     String getManagerAPICallName();
 

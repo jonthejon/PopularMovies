@@ -18,6 +18,8 @@ public interface CoreToDataManager_Interface {
     void bindDataToView(String moviePosterPath);
     void bindDataToView(int channel);
 
+    void workOnContentProvider(int channel);
+
     Movie[] getMovieArr();
 
     Movie[] getObjectArrFromJSON(String rawJSONResult);

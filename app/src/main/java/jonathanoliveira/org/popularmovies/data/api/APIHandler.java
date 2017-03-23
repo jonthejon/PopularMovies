@@ -20,6 +20,7 @@ import jonathanoliveira.org.popularmovies.data.manager.Manager;
 public class APIHandler implements APIHandler_Interface, LoaderManager.LoaderCallbacks<String> {
 
     private static final String SEARCH_QUERY_BOOL_EXTRA = "bool_option";
+    private static final String SEARCH_QUERY_OPTION_EXTRA = "search_option";
     private static final String CHANNEL_NUMBER_EXTRA = "channel";
     private static final String MOVIE_ID_EXTRA = "channel";
     private static final int ADAPTER_LOADER_ID = 22;
@@ -84,7 +85,10 @@ public class APIHandler implements APIHandler_Interface, LoaderManager.LoaderCal
 //                boolean searchOption = adapter.getBooleanOption();
                 loaderManager = adapter.getLoaderManager();
 //                bundle.putInt(CHANNEL_NUMBER_EXTRA,channel);
-                bundle.putBoolean(SEARCH_QUERY_BOOL_EXTRA, adapter.getBooleanOption());
+//                bundle.putString(SEARCH_QUERY_OPTION_EXTRA, adapter.getSearchOption());
+//                bundle.putBoolean(SEARCH_QUERY_BOOL_EXTRA, adapter.getBooleanOption());
+                boolean boolOption = adapter.getSearchOption().equals("most_popular");
+                bundle.putBoolean(SEARCH_QUERY_BOOL_EXTRA, boolOption);
 //                fireUpLoader(loaderManager, createBundle(searchOption));
                 fireUpLoader(loaderManager, bundle, ADAPTER_LOADER_ID);
                 break;
@@ -130,7 +134,7 @@ public class APIHandler implements APIHandler_Interface, LoaderManager.LoaderCal
     @Override
     public Bundle createBundle(boolean searchOption) {
         Bundle loaderBundle = new Bundle();
-        loaderBundle.putBoolean(SEARCH_QUERY_BOOL_EXTRA, searchOption);
+//        loaderBundle.putBoolean(SEARCH_QUERY_BOOL_EXTRA, searchOption);
         return loaderBundle;
     }
 
@@ -174,6 +178,7 @@ public class APIHandler implements APIHandler_Interface, LoaderManager.LoaderCal
 
     @Override
     public String getBoolConstant() {
+//        return null;
         return SEARCH_QUERY_BOOL_EXTRA;
     }
 

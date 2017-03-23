@@ -18,4 +18,6 @@ public interface GridAdapter_Interface {
 
     Context getContext();
 
+    Movie[] getMoviesArr();
+
 }

@@ -1,5 +1,7 @@
 package jonathanoliveira.org.popularmovies.data.manager;
 
+import android.util.Log;
+
 import jonathanoliveira.org.popularmovies.core.Core;
 import jonathanoliveira.org.popularmovies.core.Core_Interface;
 import jonathanoliveira.org.popularmovies.core.beans.Movie;
@@ -7,6 +9,8 @@ import jonathanoliveira.org.popularmovies.core.comm_interfaces.CoreToDataManager
 import jonathanoliveira.org.popularmovies.data.api.APIHandler;
 import jonathanoliveira.org.popularmovies.data.api.APIHandler_Interface;
 import jonathanoliveira.org.popularmovies.data.api.APIUtils;
+import jonathanoliveira.org.popularmovies.data.database.CPHandler;
+import jonathanoliveira.org.popularmovies.data.database.ContentProviderHandler_Interface;
 import jonathanoliveira.org.popularmovies.data.utilities.UtilitiesHandler;
 
 /**
@@ -19,6 +23,7 @@ public class Manager implements Manager_Interface, CoreToDataManager_Interface {
     private static final Manager_Interface manager = new Manager();
 
     private APIHandler_Interface apiHandlerInterface;
+    private ContentProviderHandler_Interface cPHandlerInterface;
 
     private final String API_CALLNAME = "api";
     private final String UTILS_CALLNAME = "utils";
@@ -33,26 +38,7 @@ public class Manager implements Manager_Interface, CoreToDataManager_Interface {
         return manager;
     }
 
-    private Manager() {
-    }
-
-/*    @Override
-    public void getDataFromDataManager(String callType) {
-        switch (callType) {
-
-            case API_CALLNAME:
-                if (apiHandlerInterface == null) {
-                    apiHandlerInterface = new APIHandler();
-                }
-//                apiHandlerInterface.startAsyncTask(Core.getCoreInstance().getBooleanOption());
-                Core_Interface core = Core.getCoreInstance();
-                apiHandlerInterface.startAsyncTaskLoader(core.getAdapterPresenterInstance(), core.getBooleanOption());
-                break;
-
-            case UTILS_CALLNAME:
-                break;
-        }
-    }*/
+    private Manager() {}
 
     @Override
     public void getDataFromDataManager(int channel) {
@@ -60,7 +46,26 @@ public class Manager implements Manager_Interface, CoreToDataManager_Interface {
         if (apiHandlerInterface == null) {
             apiHandlerInterface = new APIHandler();
         }
-        apiHandlerInterface.startAsyncTaskLoader(channel);
+        switch (channel) {
+            case 29:
+                apiHandlerInterface.startAsyncTaskLoader(channel);
+                break;
+            case 41:
+                apiHandlerInterface.startAsyncTaskLoader(channel);
+                break;
+
+            case 43:
+                apiHandlerInterface.startAsyncTaskLoader(channel);
+                break;
+            case 59:
+                if (cPHandlerInterface == null) {
+                    cPHandlerInterface = new CPHandler();
+                }
+                Log.d("JONATHAN", "getDataFromDataManager: CALLING CONTENT PROVIDER");
+                cPHandlerInterface.getFavoriteMovies();
+                break;
+        }
+
     }
 
     @Override
@@ -78,14 +83,14 @@ public class Manager implements Manager_Interface, CoreToDataManager_Interface {
             case 37:
                 apiHandlerInterface.bindPicassoToView(core.getPresenterInstance(), core.getPresenterInstance().getString());
                 break;
+            case 53:
+                if (cPHandlerInterface == null) {
+                    cPHandlerInterface = new CPHandler();
+                }
+                cPHandlerInterface.checkMovieFavorite();
+                break;
         }
     }
-
-/*    @Override
-    public void dataAPICallback(String rawJSONResult) {
-        int channel = Core.getCoreInstance().getAdapterChannel();
-        Core.getCoreInstance().returnData(getObjectFromJSON(rawJSONResult), channel);
-    }*/
 
     @Override
     public void dataAPICallback(String rawJSONResult, int loader_id) {
@@ -137,6 +142,21 @@ public class Manager implements Manager_Interface, CoreToDataManager_Interface {
 //        UtilitiesHandler_Interface utils = new UtilitiesHandler();
 //        return utils.convertJSONtoReviewArr(rawJSONResult);
         return new UtilitiesHandler().convertJSONtoReviewArr(rawJSONResult);
+    }
+
+    @Override
+    public void workOnContentProvider(int channel) {
+        if (cPHandlerInterface == null) {
+            cPHandlerInterface = new CPHandler();
+        }
+        switch (channel) {
+            case 47:
+                cPHandlerInterface.operateOnSingleMovie();
+                break;
+            case 71:
+                cPHandlerInterface.operateOnSingleMovie();
+                break;
+        }
     }
 
     @Override

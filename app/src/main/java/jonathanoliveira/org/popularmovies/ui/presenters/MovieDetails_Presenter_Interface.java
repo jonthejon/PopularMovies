@@ -21,4 +21,6 @@ public interface MovieDetails_Presenter_Interface {
 
     void handleTrailerClick(View view);
 
+    void favoriteClickListener();
+
 }

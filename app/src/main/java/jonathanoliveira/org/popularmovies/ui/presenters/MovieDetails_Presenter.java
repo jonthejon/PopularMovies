@@ -1,5 +1,7 @@
 package jonathanoliveira.org.popularmovies.ui.presenters;
 
+import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +15,7 @@ import jonathanoliveira.org.popularmovies.core.Core;
 import jonathanoliveira.org.popularmovies.core.Core_Interface;
 import jonathanoliveira.org.popularmovies.core.beans.Movie;
 import jonathanoliveira.org.popularmovies.core.comm_interfaces.CoreToPresenter_Interface;
+import jonathanoliveira.org.popularmovies.data.database.FavoriteMoviesContract;
 import jonathanoliveira.org.popularmovies.ui.views.MovieDetails_Activity_Interface;
 
 /**
@@ -24,6 +27,7 @@ public class MovieDetails_Presenter implements MovieDetails_Presenter_Interface,
     private MovieDetails_Activity_Interface activity;
     private Movie movie;
     private String poster_path;
+    private Uri presenterUri;
 
     public MovieDetails_Presenter(MovieDetails_Activity_Interface activity) {
         this.activity = activity;
@@ -36,7 +40,12 @@ public class MovieDetails_Presenter implements MovieDetails_Presenter_Interface,
             activity.bindDataToViews();
             Core_Interface core = Core.getCoreInstance();
             core.registerCoreToPresenterInterface(this);
+            Uri singleMovieUri = FavoriteMoviesContract.FavoriteMoviesEntry.MOVIES_URI;
+            setPresenterUri(ContentUris.withAppendedId(singleMovieUri,(long) (movie.getMovie_id())));
+//            setPresenterUri(singleMovieUri);
+            core.bindData(core.getCpSingleChannel());
             core.getData(core.getPresenterTrailersChannel());
+            core.getData(core.getPresenterReviewsChannel());
         }
     }
 
@@ -85,6 +94,12 @@ public class MovieDetails_Presenter implements MovieDetails_Presenter_Interface,
     }
 
     @Override
+    public void bindReviewstoViews(String[][] reviews) {
+        movie.setReviews(reviews);
+        activity.bindReviewsToViews();
+    }
+
+    @Override
     public Context getContext() {
         return activity.getContext();
     }
@@ -114,5 +129,45 @@ public class MovieDetails_Presenter implements MovieDetails_Presenter_Interface,
         DisplayMetrics metrics = new DisplayMetrics();
         activity.getActivityWindowManager().getDefaultDisplay().getMetrics(metrics);
         return metrics.widthPixels;
+    }
+
+    @Override
+    public Movie getMovie() {
+        return this.movie;
+    }
+
+    @Override
+    public Uri getPresenterUri() {
+        return this.presenterUri;
+    }
+
+    @Override
+    public void setPresenterUri(Uri presenterUri) {
+        if (this.presenterUri != null) this.presenterUri = null;
+        this.presenterUri = presenterUri;
+    }
+
+    @Override
+    public void favoriteClickListener() {
+        Core_Interface core = Core.getCoreInstance();
+        core.registerCoreToPresenterInterface(this);
+        if (movie.isFavorite()) {
+            setPresenterUri(FavoriteMoviesContract.FavoriteMoviesEntry.MOVIE_DELETE_URI);
+            core.storeData(core.getCpDeleteChannel());
+        } else {
+            setPresenterUri(FavoriteMoviesContract.FavoriteMoviesEntry.MOVIE_INSERT_URI);
+            core.storeData(core.getCpInsertChannel());
+        }
+    }
+
+    @Override
+    public ContentResolver getActivityContentResolver() {
+        return activity.getActivityContentResolver();
+    }
+
+    @Override
+    public void checkFavoriteCallback(boolean isFavorite) {
+        movie.setFavorite(isFavorite);
+        activity.setFavoriteToggleButton();
     }
 }

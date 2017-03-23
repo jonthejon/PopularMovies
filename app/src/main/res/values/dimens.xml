@@ -1,3 +1,76 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="aligner_0dp">0dp</dimen>
+    <dimen name="title_padding_bottom">30dp</dimen>
+    <dimen name="title_padding_end">20dp</dimen>
+    <dimen name="title_padding_start">20dp</dimen>
+    <dimen name="title_padding_top">30dp</dimen>
+
+    <dimen name="poster_width">157dp</dimen>
+    <dimen name="poster_heigth">218dp</dimen>
+    <dimen name="poster_margin">16dp</dimen>
+
+    <dimen name="movie_year_margin_top">25dp</dimen>
+    <dimen name="movie_year_margin_start">24dp</dimen>
+    <dimen name="movie_year_text_size">20sp</dimen>
+
+    <dimen name="movie_trailer_review_margin_top">8dp</dimen>
+
+    <dimen name="movie_rating_margin_top">7dp</dimen>
+    <dimen name="movie_rating_text_size">18sp</dimen>
+
+    <dimen name="toggle_margin_start">12dp</dimen>
+    <dimen name="toggle_margin_top">15dp</dimen>
+    
+    <dimen name="overview_margin_top_basic">12dp</dimen>
+    <dimen name="overview_margin_top_sw600dp">16dp</dimen>
+    <dimen name="overview_margin_top_land">5dp</dimen>
+    <dimen name="overview_text_size">15sp</dimen>
+    <dimen name="overview_margin_start_basic">10dp</dimen>
+    <dimen name="overview_margin_start_sw600dp">20dp</dimen>
+    <dimen name="overview_margin_start_land">20dp</dimen>
+    <dimen name="overview_margin_end">10dp</dimen>
+
+    <dimen name="divisor_heigth">1dp</dimen>
+    <dimen name="divisor_margin_top">16dp</dimen>
+    <dimen name="divisor_margin_top_other_divisors">8dp</dimen>
+    <dimen name="divisor_margin_start">10dp</dimen>
+    <dimen name="divisor_margin_end">10dp</dimen>
+
+    <dimen name="constraint_width">0dp</dimen>
+    <dimen name="constraint_trailer_1_margin_start_sw600dp">35dp</dimen>
+
+    <dimen name="trailer_title_margin_start">10dp</dimen>
+    <dimen name="trailer_title_margin_top">16dp</dimen>
+    <dimen name="trailer_title_text_size">16sp</dimen>
+    <dimen name="trailer_title_text_size_sw600dp">14sp</dimen>
+    <dimen name="trailer_title_margin_start_sw600dp">15dp</dimen>
+
+    <dimen name="trailer_button_margin_start">16dp</dimen>
+    <dimen name="trailer_button_margin_top">16dp</dimen>
+    <dimen name="trailer_button_margin_start_2">26dp</dimen>
+    <dimen name="trailer_button_margin_top_2">8dp</dimen>
+    <dimen name="trailer_button_margin_start_sw600dp">10dp</dimen>
+
+    <dimen name="trailer_name_margin_bottom">8dp</dimen>
+    <dimen name="trailer_name_margin_start">24dp</dimen>
+    <dimen name="trailer_name_margin_top">8dp</dimen>
+    <dimen name="trailer_name_text_size">16sp</dimen>
+
+    <dimen name="review_title_margin_start">10dp</dimen>
+    <dimen name="review_title_margin_top">20dp</dimen>
+    <dimen name="review_title_text_size">16sp</dimen>
+
+    <dimen name="review_author_margin_start">24dp</dimen>
+    <dimen name="review_author_margin_bottom">8dp</dimen>
+    <dimen name="review_author_margin_top">14dp</dimen>
+    <dimen name="review_author_text_size">14sp</dimen>
+
+    <dimen name="review_margin_start">24dp</dimen>
+    <dimen name="review_margin_end">10dp</dimen>
+    <dimen name="review_margin_top">8dp</dimen>
+    <dimen name="review_margin_text_size">14sp</dimen>
+
+
 </resources>

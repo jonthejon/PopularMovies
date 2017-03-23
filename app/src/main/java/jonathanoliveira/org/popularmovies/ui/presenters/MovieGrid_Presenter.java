@@ -30,21 +30,24 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
         int itemId = item.getItemId();
         switch (itemId) {
             case R.id.most_popular_menu_item:
-                if (activity.getObjectStateBoolean()) {
+                activity.setOptionSelected("most_popular");
+/*                if (activity.getObjectStateBoolean()) {
                     return true;
                 } else {
                     activity.setObjectStateBoolean(true);
-                }
+                }*/
                 break;
             case R.id.top_rated_menu_item:
-                if (!activity.getObjectStateBoolean()) {
+                activity.setOptionSelected("top_rated");
+/*                if (!activity.getObjectStateBoolean()) {
                     activity.setObjectStateBoolean(false);
                 } else {
                     activity.setObjectStateBoolean(false);
-                }
+                }*/
                 break;
             case R.id.favorites_menu_item:
-                return true;
+                activity.setOptionSelected("favorites");
+                break;
         }
         askCoreForData();
         return true;
@@ -77,11 +80,27 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
 
     @Override
     public void askCoreForData() {
+//        Log.d("JONATHAN", "askCoreForData: " + activity.getOptionSelected());
         Core_Interface core = Core.getCoreInstance();
         core.registerCoreToAdapterInterface(this);
+        int channel = 0;
+        switch (activity.getOptionSelected()) {
+            case "most_popular":
+                channel = core.getAdapterChannel();
+                break;
+
+            case "top_rated":
+                channel = core.getAdapterChannel();
+                break;
+
+            case "favorites":
+                channel = core.getCpAdapterChannel();
+                break;
+        }
 //        core.setBooleanOption(activity.getObjectStateBoolean());
 //        core.getData(core.getManagerAPICallName());
-        core.getData(core.getAdapterChannel());
+//        Log.d("JONATHAN", "askCoreForData: " + channel);
+        core.getData(channel);
     }
 
     @Override
@@ -97,5 +116,15 @@ public class MovieGrid_Presenter implements MovieGrid_Presenter_Interface {
     @Override
     public boolean getBooleanOption() {
         return activity.getObjectStateBoolean();
+    }
+
+    @Override
+    public String getSearchOption() {
+        return activity.getOptionSelected();
+    }
+
+    @Override
+    public void updateRecyclerViewState() {
+        activity.updateRecyclerViewState();
     }
 }

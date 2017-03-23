@@ -22,6 +22,9 @@ public interface MovieGrid_Activity_Interface {
 
     boolean getObjectStateBoolean();
 
+    void setOptionSelected(String selection);
+    String getOptionSelected();
+
     MovieGrid_Presenter_Interface getPresenter();
 
     GridAdapter getRecyclerViewAdapter();
@@ -41,4 +44,6 @@ public interface MovieGrid_Activity_Interface {
     View getBaseView();
 
     LoaderManager getActivityLoaderManager();
+
+    void updateRecyclerViewState();
 }

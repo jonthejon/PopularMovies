@@ -11,6 +11,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/movie_details_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
     <TextView
         android:id="@+id/new_movie_title"
         android:layout_width="@dimen/aligner_0dp"
@@ -106,18 +112,20 @@
         android:id="@+id/new_movie_overview"
         android:layout_width="@dimen/aligner_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/overview_margin_top_basic"
+        android:layout_marginTop="@dimen/overview_margin_top_land"
         android:fontFamily="monospace"
         android:scrollHorizontally="false"
         android:textColor="@android:color/black"
         android:textSize="@dimen/overview_text_size"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/new_movie_fav_btn"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_movie_poster"
+        app:layout_constraintTop_toTopOf="@+id/new_movie_poster"
         tools:text="@string/dummy_overview"
-        android:layout_marginStart="@dimen/overview_margin_start_basic"
-        android:layout_marginEnd="@dimen/overview_margin_end" />
+        android:layout_marginStart="@dimen/overview_margin_start_land"
+        android:layout_marginEnd="@dimen/overview_margin_end"/>
+
+        </android.support.constraint.ConstraintLayout>
 
     <ImageView
         android:id="@+id/firstMovieDivisor"
@@ -127,7 +135,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@android:color/darker_gray"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/new_movie_overview"
+        app:layout_constraintTop_toBottomOf="@+id/movie_details_constraint"
         android:layout_marginTop="@dimen/divisor_margin_top"
         android:layout_marginStart="@dimen/divisor_margin_start"
         android:layout_marginEnd="@dimen/divisor_margin_end"
@@ -347,16 +355,16 @@
         android:id="@+id/new_review_text_1"
         android:layout_width="@dimen/aligner_0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/review_margin_top"
         android:fontFamily="monospace"
         android:scrollHorizontally="false"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/review_margin_text_size"
+        android:textSize="14sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_review_author_1"
         tools:text="@string/dummy_overview"
-        android:layout_marginTop="@dimen/review_margin_top"
         android:layout_marginStart="@dimen/review_margin_start"
         android:layout_marginEnd="@dimen/review_margin_end" />
 
@@ -430,7 +438,6 @@
             app:srcCompat="@android:color/darker_gray"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/new_review_text_2"
-
             android:contentDescription="@string/dummy_image_desc" />
 
     </android.support.constraint.ConstraintLayout>

@@ -23,4 +23,6 @@ public interface MovieGrid_Presenter_Interface extends CoreToAdapter_Interface {
 
     Context getContext();
 
+    void updateRecyclerViewState();
+
 }

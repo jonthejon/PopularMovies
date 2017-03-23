@@ -27,6 +27,13 @@ public class Core implements Core_Interface {
     private final int PRESENTER_CHANNEL = 37;
     private final int PRESENTER_TRAILERS_CHANNEL = 41;
     private final int PRESENTER_REVIEWS_CHANNEL = 43;
+    private final int PRESENTER_CP_INSERT_CHANNEL = 47;
+    private final int PRESENTER_CP_SINGLE_CHANNEL = 53;
+    private final int PRESENTER_CP_ADAPTER_CHANNEL = 59;
+    private final int PRESENTER_CP_TRAILER_CHANNEL = 61;
+    private final int PRESENTER_CP_REVIEW_CHANNEL = 67;
+    private final int PRESENTER_CP_DELETE_CHANNEL = 71;
+
 
     private Core() {
         this.dataManager = Manager.getCommManagerInstance();
@@ -60,11 +67,6 @@ public class Core implements Core_Interface {
         this.coreToViewHolderInterface = coreToViewHolderInterface;
     }
 
-/*    @Override
-    public void getData(String callType) {
-        dataManager.getDataFromDataManager(callType);
-    }*/
-
     @Override
     public void getData(int channel) {
         dataManager.getDataFromDataManager(channel);
@@ -81,11 +83,13 @@ public class Core implements Core_Interface {
     }
 
     @Override
+    public void storeData(int channel) {
+        dataManager.workOnContentProvider(channel);
+    }
+
+    @Override
     public void returnData(Movie[] movieArr, int channel) {
         switch (channel) {
-/*            case ADAPTER_CHANNEL:
-                coreToAdapterInterface.updateAdapter(movieArr);
-                break;*/
             case ADAPTER_MOVIES_CHANNEL:
                 coreToAdapterInterface.updateAdapter(movieArr);
                 break;
@@ -101,10 +105,16 @@ public class Core implements Core_Interface {
             case PRESENTER_TRAILERS_CHANNEL:
                 coreToPresenterInterface.bindTrailerstoViews(dataManager.getTrailerArrFromJSON(rawJSONResult));
                 break;
-/*            case PRESENTER_REVIEWS_CHANNEL:
+            case PRESENTER_REVIEWS_CHANNEL:
                 coreToPresenterInterface.bindReviewstoViews(dataManager.getReviewArrFromJSON(rawJSONResult));
-                break;*/
+                break;
         }
+    }
+
+    @Override
+    public void returnData(Movie[] movieArr) {
+        if (movieArr == null) coreToAdapterInterface.updateAdapter(new Movie[0]);
+        else coreToAdapterInterface.updateAdapter(movieArr);
     }
 
     @Override
@@ -124,7 +134,6 @@ public class Core implements Core_Interface {
 
     @Override
     public int getAdapterChannel() {
-//        return ADAPTER_CHANNEL;
         return ADAPTER_MOVIES_CHANNEL;
     }
 
@@ -146,6 +155,26 @@ public class Core implements Core_Interface {
     @Override
     public int getPresenterReviewsChannel() {
         return PRESENTER_REVIEWS_CHANNEL;
+    }
+
+    @Override
+    public int getCpInsertChannel() {
+        return PRESENTER_CP_INSERT_CHANNEL;
+    }
+
+    @Override
+    public int getCpDeleteChannel() {
+        return PRESENTER_CP_DELETE_CHANNEL;
+    }
+
+    @Override
+    public int getCpSingleChannel() {
+        return PRESENTER_CP_SINGLE_CHANNEL;
+    }
+
+    @Override
+    public int getCpAdapterChannel() {
+        return PRESENTER_CP_ADAPTER_CHANNEL;
     }
 
     @Override
