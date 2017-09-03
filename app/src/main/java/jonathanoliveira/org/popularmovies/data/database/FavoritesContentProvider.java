@@ -78,6 +78,7 @@ public class FavoritesContentProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+//        get your write only final SQLiteDatabase db using the dbHelper.getWritableDatabase() method
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
         switch (CPHandler.buildUriMatcher().match(uri)) {
             case CPHandler.DELETE_SINGLE_MOVIE_WITH_ID:

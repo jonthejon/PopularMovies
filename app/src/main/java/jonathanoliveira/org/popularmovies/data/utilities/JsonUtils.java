@@ -25,6 +25,7 @@ public final class JsonUtils {
      * getFullWeatherDataFromJson function, leveraging the data we have stored in the JSON. For
      * now, we just convert the JSON into human-readable strings.
      *
+     *
      * @param jsonString JSON response from server
      *
      * @return Array of Strings describing weather data

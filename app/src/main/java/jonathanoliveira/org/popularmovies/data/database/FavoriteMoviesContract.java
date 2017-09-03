@@ -27,6 +27,7 @@ public class FavoriteMoviesContract {
 
     public static final class FavoriteMoviesEntry implements BaseColumns {
 
+        //**** create a static final Uri for each table that will be accessed in your CP using the Uri buildUpon() method on top of the BASE_CONTENT_URI you created.
         public static final Uri MOVIES_URI =
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_MOVIES).build();
         public static final Uri MOVIE_INSERT_URI =

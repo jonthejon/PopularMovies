@@ -15,11 +15,11 @@ import jonathanoliveira.org.popularmovies.ui.presenters.MovieGrid_Presenter_Inte
  */
 
 // REFERENCES TO ADAPTER MUST BE OF GRIDADAPTER TYPE INSTEAD OF INTERFACE TYPE IN ORDER FOR ADAPTER TO PROPERLY WORK
+
 public class GridAdapter extends RecyclerView.Adapter<PosterViewHolder> implements GridAdapter_Interface {
 
     private Movie[] moviesArr;
     final private MovieGrid_Presenter_Interface presenter;
-
 
     public GridAdapter(MovieGrid_Presenter_Interface presenter) {
         this.presenter = presenter;

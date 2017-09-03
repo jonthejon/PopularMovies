@@ -26,9 +26,10 @@
         </activity>
 
         <provider
-            android:name="jonathanoliveira.org.popularmovies.data.database.FavoritesContentProvider"
+            android:name=".data.database.FavoritesContentProvider"
             android:authorities="jonathanoliveira.org.popularmovies"
-            android:exported="false"/>
+            android:exported="false" />
+
     </application>
 
 </manifest>

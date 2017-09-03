@@ -49,6 +49,7 @@ public class CPHandler implements LoaderManager.LoaderCallbacks<Cursor>, Content
                 Uri content_uri = presenter.getPresenterUri();
                 Context context = presenter.getContext();
 //        Log.d(TAG, "onCreateLoader: " + content_uri.toString());
+//                CursorLoader cursorLoader = new CursorLoader()
                 return new CursorLoader(context, content_uri, null, null, null, null);
 
             case ALL_CURSOR_LOADER_ID:
@@ -75,6 +76,7 @@ public class CPHandler implements LoaderManager.LoaderCallbacks<Cursor>, Content
                     getCoreInstance().returnData(null);
                     break;
                 }
+
                 ArrayList<Movie> movieArrayList = new ArrayList<>();
                 int id_index = data.getColumnIndex(FavoriteMoviesContract.FavoriteMoviesEntry.COLUMN_MOVIE_ID);
                 int title_index = data.getColumnIndex(FavoriteMoviesContract.FavoriteMoviesEntry.COLUMN_TITLE);
