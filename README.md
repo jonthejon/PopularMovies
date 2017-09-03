@@ -6,7 +6,8 @@ Video playlist Android app that allows the user to visualize the latest or most 
 
 The default main screen shows the most popular movies (displayed in order of popularity) as in the movies list of the MovieDB database. By clicking in the options menu, you can see the list of the top-rated movies of the MoviesDB or your list of saved favorite movies.
 
-
+![Main Screen](https://github.com/jonthejon/PopularMovies/blob/master/main_screen.png)
+![Main Screen - options menu](https://github.com/jonthejon/PopularMovies/blob/master/main_screen_options.png)
 
 By clicking in any poster, you're taken to the details page of that particular movie.
 This page contains:
@@ -19,7 +20,8 @@ This page contains:
       by clicking any one of this, you'll be taken to the YouTube app of your phone for visualizing the trailer
   6) list of available reviews 
   
-  
+![Details Screen](https://github.com/jonthejon/PopularMovies/blob/master/movie_details_1.png)
+![Details Screen - scroll](https://github.com/jonthejon/PopularMovies/blob/master/movie_details_2.png)  
 
 ### Installing
 
